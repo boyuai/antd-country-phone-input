@@ -1,56 +1,56 @@
-# ALIPLAYER-REACT
+# antd-country-phone-input
 
-React component wrapper for [aliplayer](https://player.alicdn.com).
+Country phone input component as standard Ant.Design form item.
 
-Current version: 2.8.2
+Currently only support Chinese.
+
+![Preview](asset/screenshot.png)
 
 ## Installation
 
 ```
-npm i aliplayer-react
+npm i antd-country-phone-input
 ```
 
 ## Usage
 
-[![Edit aliplayer-react](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/floral-wind-5b507?fontsize=14)
+[![Edit antd-country-phone-input](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/antd-country-phone-input-mtksn?fontsize=14)
 
 ```js
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import Player from 'aliplayer-react';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Form } from "antd";
+import CountryPhoneCode from "antd-country-phone-input";
+import "antd/dist/antd.css";
 
-const config = {
-    source: "//player.alicdn.com/video/aliyunmedia.mp4",
-    width: "100%",
-    height: "500px",
-    autoplay: true,
-    isLive: false,
-    rePlay: false,
-    playsinline: true,
-    preload: true,
-    controlBarVisibility: "hover",
-    useH5Prism: true,
-    components: [
-        {
-            name: "RateComponent",
-            type: Player.components.RateComponent,
-        }
-    ]
+const App = ({ form }) => {
+  const submit = e => {
+    e.preventDefault();
+    form.validateFields((err, values) => {
+      if (!err) {
+        console.log("Received values of form: ", values);
+      }
+    });
+  };
+  return (
+    <Form onSubmit={submit}>
+      <Form.Item>
+        {form.getFieldDecorator("countryPhone")(<CountryPhoneCode />)}
+      </Form.Item>
+    </Form>
+  );
 };
 
-class App extends Component {
-    state = {
-        instance: null,  // player instance, e.g: player.stop();
-    }
-    render() {
-        return <div>
-            <Player
-                config={config}
-                onGetInstance={instance => this.setState({ instance })}
-            />
-        </div>
-    }
-}
+const WrappedApp = Form.create({
+  mapPropsToFields(props) {
+    return {
+      countryPhone: Form.createFormField({
+        value: { code: 86, phone: "13012345678" }
+      })
+    };
+  }
+})(App);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const rootElement = document.getElementById("root");
+ReactDOM.render(<WrappedApp />, rootElement);
 ```
