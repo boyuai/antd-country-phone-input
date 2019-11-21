@@ -45,7 +45,7 @@ const WrappedApp = Form.create({
   mapPropsToFields(props) {
     return {
       countryPhone: Form.createFormField({
-        value: { code: 86, phone: "13012345678" }
+        value: { code: 86, phone: "13012345678", short: "CN" }
       })
     };
   }
