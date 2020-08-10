@@ -79,6 +79,7 @@ function CountryPhoneCode({ onChange, value, inputProps }: PropTypes, ref: any) 
     return (
         <InputGroup compact>
             <Select
+                bordered={false}
                 value={country && country.short}
                 style={{ width: "100px" }}
                 dropdownMatchSelectWidth={false}
@@ -99,6 +100,7 @@ function CountryPhoneCode({ onChange, value, inputProps }: PropTypes, ref: any) 
                 })}
             </Select>
             <Input
+                bordered={false}
                 style={{ width: "calc(100% - 100px)" }}
                 ref={phoneRef}
                 onChange={handlePhoneChange}
