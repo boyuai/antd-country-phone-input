@@ -15,6 +15,7 @@ interface PropTypes {
     onChange?: Function;
     value?: CountryPhoneCodeValue;
     inputProps?: any;
+    bordered?: boolean;
 }
 
 interface CountryPhoneCodeValue {
@@ -23,7 +24,7 @@ interface CountryPhoneCodeValue {
     short?: string;
 }
 
-function CountryPhoneCode({ onChange, value, inputProps }: PropTypes, ref: any) {
+function CountryPhoneCode({ onChange, value, inputProps, bordered = true }: PropTypes, ref: any) {
     const defaultCountry: ICountry | undefined = useMemo(() => {
         return countries.find(c => c.short === 'CN');
     }, []);
@@ -79,7 +80,7 @@ function CountryPhoneCode({ onChange, value, inputProps }: PropTypes, ref: any) 
     return (
         <InputGroup compact>
             <Select
-                bordered={false}
+                bordered={bordered}
                 value={country && country.short}
                 style={{ width: "100px" }}
                 dropdownMatchSelectWidth={false}
@@ -100,7 +101,7 @@ function CountryPhoneCode({ onChange, value, inputProps }: PropTypes, ref: any) 
                 })}
             </Select>
             <Input
-                bordered={false}
+                bordered={bordered}
                 style={{ width: "calc(100% - 100px)" }}
                 ref={phoneRef}
                 onChange={handlePhoneChange}
