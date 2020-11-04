@@ -20,8 +20,6 @@ export type CountryPhoneInputValue = {
 function CountryPhoneInput({
   onChange,
   value,
-  bordered = true,
-  className,
   selectProps,
   ...props
 }: PropTypes) {
@@ -101,7 +99,6 @@ function CountryPhoneInput({
           })}
         </Select>
       }
-      bordered={bordered}
       {...props}
       value={value && value.phone}
       onChange={handlePhoneChange}
