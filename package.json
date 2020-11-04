@@ -1,6 +1,6 @@
 {
   "name": "antd-country-phone-input",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Country phone input component as standard Ant.Design form item",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -10,9 +10,9 @@
     "test": "react-scripts test",
     "build:es": "rimraf es && tsc --module es6 --outDir es --noEmit false",
     "build:lib": "rimraf lib && tsc --module commonjs --outDir lib --noEmit false",
-    "prepare": "npm-run-all build:*"
+    "prepare": "npm-run-all --parallel build:*"
   },
-  "repository": "git@github.com:wangsijie/antd-country-phone-input.git",
+  "repository": "git@github.com:boyuai/antd-country-phone-input.git",
   "keywords": [
     "antd",
     "ant-design",
