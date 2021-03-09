@@ -1,12 +1,21 @@
-export type Country = {
-  zh: string;
-  en: string;
+export enum Locale {
+  zh,
+  en,
+}
+
+export type LocaleType = keyof typeof Locale;
+
+export type LocaleProps = {
+  [K in LocaleType]?: string;
+};
+
+export type Area = {
   short: string;
   emoji: string;
   phoneCode: string;
-};
+} & LocaleProps;
 
-const countries: Country[] = [
+export const defaultAreas: Area[] = [
   {
     zh: '加拿大',
     en: 'Canada',
@@ -1306,7 +1315,7 @@ const countries: Country[] = [
     zh: '中国台湾',
     en: 'Taiwan',
     short: 'TW',
-    emoji: '🇨🇳',
+    emoji: '🇹🇼',
     phoneCode: '886',
   },
   {
@@ -1521,4 +1530,4 @@ const countries: Country[] = [
   },
 ];
 
-export default countries;
+export default defaultAreas;

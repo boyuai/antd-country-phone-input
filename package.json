@@ -1,17 +1,9 @@
 {
+  "license": "MIT",
   "name": "antd-country-phone-input",
-  "version": "3.0.2",
+  "version": "3.1.0",
   "description": "Country phone input component as standard Ant.Design form item",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "lib/index.d.ts",
-  "scripts": {
-    "start": "react-scripts start",
-    "test": "react-scripts test",
-    "build:es": "rimraf es && tsc --module es6 --outDir es --noEmit false",
-    "build:lib": "rimraf lib && tsc --module commonjs --outDir lib --noEmit false",
-    "prepare": "npm-run-all --parallel build:*"
-  },
+  "author": "wangsijie <i@sijie.wang>",
   "repository": "git@github.com:boyuai/antd-country-phone-input.git",
   "keywords": [
     "antd",
@@ -19,42 +11,28 @@
     "country-code",
     "phone"
   ],
-  "author": "wangsijie <i@sijie.wang>",
-  "license": "MIT",
-  "private": false,
-  "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.53",
-    "@types/react-dom": "^16.9.8",
-    "@typescript-eslint/eslint-plugin": "^4.6.0",
-    "@typescript-eslint/parser": "^4.6.0",
-    "antd": "^4.5.2",
-    "eslint": "^7.12.0",
-    "eslint-config-prettier": "^6.14.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.0",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.0.3",
-    "web-vitals": "^0.2.4"
+  "main": "./dist/index.js",
+  "module": "./dist/index.m.js",
+  "exports": "./dist/index.modern.js",
+  "source": "./src/index.tsx",
+  "typings": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=10"
   },
-  "peerDependencies": {
-    "antd": "^4.5.2"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "scripts": {
+    "build": "microbundle --format modern,es,cjs",
+    "start": "microbundle watch --format modern,es,cjs",
+    "prepack": "yarn build",
+    "lint:es": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:style": "stylelint '**/*.{css,less,scss,sass}'",
+    "test": "yarn test:unit && yarn test:lint",
+    "test:lint": "yarn lint:es && yarn lint:style",
+    "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom",
+    "deploy": "gh-pages -d example/build"
   },
   "husky": {
     "hooks": {
@@ -62,20 +40,52 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json}": [
+    "*.{js,jsx,ts,tsx}": [
       "eslint --fix"
+    ],
+    "*.{css,less,scss,sass}": [
+      "stylelint --fix"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "peerDependencies": {
+    "antd": "4.x",
+    "react": ">= 16.8.0 || 17.x"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "~7.29.4",
+    "@testing-library/jest-dom": "~5.11.9",
+    "@testing-library/react": "~11.2.3",
+    "@testing-library/user-event": "~12.6.0",
+    "@types/jest": "~26.0.20",
+    "@types/node": "~14.14.21",
+    "@types/react": "~17.0.0",
+    "@types/react-dom": "~17.0.0",
+    "@typescript-eslint/eslint-plugin": "~4.0.0",
+    "@typescript-eslint/parser": "~4.0.0",
+    "antd": "^4.13.1",
+    "babel-eslint": "~10.1.0",
+    "cross-env": "~7.0.3",
+    "eslint": "~7.11.0",
+    "eslint-config-prettier": "~7.1.0",
+    "eslint-config-react-app": "~6.0.0",
+    "eslint-plugin-flowtype": "~5.2.0",
+    "eslint-plugin-import": "~2.22.0",
+    "eslint-plugin-jsx-a11y": "~6.3.1",
+    "eslint-plugin-prettier": "~3.3.1",
+    "eslint-plugin-react": "~7.20.3",
+    "eslint-plugin-react-hooks": "~4.0.8",
+    "gh-pages": "^3.1.0",
+    "husky": "~4.3.8",
+    "less": "^4.1.1",
+    "lint-staged": "~10.5.3",
+    "microbundle": "~0.13.0",
+    "prettier": "~2.2.1",
+    "react": "~17.0.1",
+    "react-dom": "~17.0.1",
+    "react-scripts": "~4.0.1",
+    "stylelint": "~13.8.0",
+    "stylelint-config-prettier": "~8.0.2",
+    "stylelint-prettier": "~1.1.2",
+    "typescript": "~4.1.3"
   }
 }

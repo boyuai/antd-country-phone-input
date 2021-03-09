@@ -2,50 +2,19 @@
 
 Country phone input component as standard Ant.Design form item.
 
-Currently only support Chinese.
-
-![Preview](asset/screenshot.png)
+![Preview](assets/screenshot.png)
 
 ## Installation
 
+```bash
+npm install antd-country-phone-input
 ```
-npm i antd-country-phone-input
+or
+```
+yarn add antd-country-phone-input
 ```
 
-## [Usage](src/App.tsx)
+## Usage
 
-[![Edit antd-country-phone-input](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/antd-country-phone-input-mtksn?fontsize=14)
-
-```js
-import { Button, Form } from 'antd';
-import CountryPhoneInput from "antd-country-phone-input";
-
-const App = () => {
-  const onFinish = (values) => {
-    console.log('Success:', values);
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-  };
-
-  return (
-    <Form
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      style={{ width: 400, height: 300, margin: 40 }}
-    >
-      <Form.Item name="phone">
-        <CountryPhoneInput />
-      </Form.Item>
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
-  );
-};
-
-export default App;
-```
+- [Example](example/src/App.tsx)
+- [Online Demo](https://boyuai.github.io/antd-country-phone-input/)

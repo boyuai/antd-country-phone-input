@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    // Project Options
     "allowJs": true,
     "declaration": true,
     "outDir": "dist",
@@ -8,27 +9,31 @@
     "lib": [
       "DOM",
       "DOM.Iterable",
-      "ESNext"
+      "ESNext",
     ],
     "jsx": "react-jsx",
-    "jsxFactory": "",
     "sourceMap": true,
     "isolatedModules": true,
     "noEmit": true,
+    // Module Resolution
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "Node",
     "esModuleInterop": true,
+    // Strict Checks
     "strict": true,
     "strictNullChecks": true,
+    // Linter Checks
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    // Advanced
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
   },
+  // File Inclusion
   "include": [
     "src"
-  ]
+  ],
 }

@@ -1,13 +1,14 @@
-// https://prettier.io/docs/en/integrating-with-linters.html#eslint
 module.exports = {
-  root: true,
-  extends: ['plugin:prettier/recommended'],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'prettier'],
+  extends: ['react-app', 'plugin:prettier/recommended'],
+  env: {
+    jest: true,
+  },
   rules: {
-    'prettier/prettier': 'error',
-    'no-duplicate-imports': 'error',
-    'no-alert': 'warn',
-    'no-console': 'warn',
+    'prettier/prettier': 2,
+    'no-duplicate-imports': 2,
+    'no-alert': 1,
+    'no-console': 1,
   },
 };

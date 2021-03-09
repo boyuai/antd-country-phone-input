@@ -1,4 +1,6 @@
-/node_modules
-/build
-/es
-/lib
+build/
+dist/
+node_modules/
+.snapshots/
+*.min.js
+!.eslintrc.js
