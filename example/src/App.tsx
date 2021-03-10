@@ -1,8 +1,12 @@
+/* eslint-disable no-console */
 import { Button, Card, Form } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
-import CountryPhoneInput from 'antd-country-phone-input';
+import CountryPhoneInput, {
+  CountryPhoneInputValue,
+} from 'antd-country-phone-input';
 import 'antd/dist/antd.css';
 import 'antd-country-phone-input/dist/index.css';
+import { useState } from 'react';
 
 const cardStyle = { marginBottom: 6 };
 
@@ -15,10 +19,17 @@ const App = () => {
     console.log('onFinishFailed:', errorInfo);
   };
 
+  const [value, setValue] = useState<CountryPhoneInputValue>({ short: 'CN' });
+
   return (
     <>
       <Card type="inner" title="Basic Usage" style={cardStyle}>
-        <CountryPhoneInput />
+        <CountryPhoneInput
+          value={value}
+          onChange={(v) => {
+            setValue(v);
+          }}
+        />
       </Card>
       <Card type="inner" title="Inline Style" style={cardStyle}>
         <CountryPhoneInput inline />
@@ -35,10 +46,9 @@ const App = () => {
         <Form
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
-          style={{ width: 400, height: 300, margin: 40 }}
           initialValues={{
             normal: {
-              short: 'CA',
+              short: 'US',
             },
             undefined: undefined,
           }}
