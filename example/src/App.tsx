@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import { useState } from 'react';
 import { Button, Card, Form } from 'antd';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import CountryPhoneInput, {
@@ -6,7 +7,6 @@ import CountryPhoneInput, {
 } from 'antd-country-phone-input';
 import 'antd/dist/antd.css';
 import 'antd-country-phone-input/dist/index.css';
-import { useState } from 'react';
 
 const cardStyle = { marginBottom: 6 };
 
@@ -32,13 +32,32 @@ const App = () => {
         />
       </Card>
       <Card type="inner" title="Inline Style" style={cardStyle}>
-        <CountryPhoneInput inline />
+        <CountryPhoneInput inline locale="ja" />
       </Card>
       <Card type="inner" title="Chinese Version" style={cardStyle}>
         <CountryPhoneInput
           locale="zh"
           selectProps={{
             filterArea: (area) => area.zh?.includes('中国') || false,
+            areaProcessor: (area) => {
+              if (area.zh?.includes('台湾')) {
+                return {
+                  ...area,
+                  zh: '中国台湾',
+                  emoji: '🇨🇳',
+                };
+              }
+              return area;
+            },
+          }}
+        />
+      </Card>
+      <Card type="inner" title="Taiwan Version" style={cardStyle}>
+        <CountryPhoneInput
+          locale="zh-tw"
+          defaultValue={{ short: 'TW' }}
+          selectProps={{
+            filterArea: (area) => area['zh-tw']?.includes('台灣') || false,
           }}
         />
       </Card>
@@ -52,13 +71,13 @@ const App = () => {
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           initialValues={{
-            normal: {
-              short: 'US',
+            wrong: {
+              short: 'uS',
             },
             undefined: undefined,
           }}
         >
-          <Form.Item name="normal">
+          <Form.Item name="wrong">
             <CountryPhoneInput />
           </Form.Item>
           <Form.Item name="undefined">

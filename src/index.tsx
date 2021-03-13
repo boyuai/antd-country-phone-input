@@ -1,15 +1,17 @@
-import { useCallback, useState, useMemo, useEffect, useRef } from 'react';
+import { useCallback, useState, useEffect, useRef } from 'react';
 import { Input } from 'antd';
 import { GroupProps, InputProps } from 'antd/es/input';
-import areas, { Area, LocaleType } from './sources';
+import compactAreas, { Area, LocaleType } from './sources';
 import AreaSelect, { AreaSelectProps } from './area-select';
 import './styles.less';
 
 export * from './sources';
 
-interface PropTypes extends Omit<InputProps, 'value' | 'onChange'> {
+interface PropTypes
+  extends Omit<InputProps, 'defaultValue' | 'value' | 'onChange'> {
   onChange?: (value: CountryPhoneInputValue) => void;
   value?: CountryPhoneInputValue;
+  defaultValue?: CountryPhoneInputValue;
   selectProps?: AreaSelectProps;
   inputGroupProps?: GroupProps;
   inline?: boolean;
@@ -23,6 +25,7 @@ export type CountryPhoneInputValue = {
 };
 
 function CountryPhoneInput({
+  defaultValue,
   onChange,
   selectProps = {},
   inputGroupProps,
@@ -31,17 +34,26 @@ function CountryPhoneInput({
   ...inputProps
 }: PropTypes) {
   selectProps.locale = locale;
-  const defaultArea: Area | undefined = useMemo(() => {
-    return areas.find((area) => area.short === 'CN');
-  }, []);
+  if (defaultValue) {
+    defaultValue.short = defaultValue.short?.toUpperCase();
+  }
+  if (inputProps.value) {
+    inputProps.value.short = inputProps.value.short?.toUpperCase();
+  }
 
+  const defaultArea: Area | undefined = compactAreas.find((area) => {
+    if (defaultValue) {
+      return area.short === defaultValue.short;
+    }
+    return area.short === 'CN';
+  });
   const [area, setArea] = useState<Area | undefined>(defaultArea);
-  const [phone, setPhone] = useState<string | undefined>();
+  const [phone, setPhone] = useState<string | undefined>(defaultValue?.phone);
+
   const latestInputPropsRef = useRef(inputProps);
   useEffect(() => {
     latestInputPropsRef.current = inputProps;
   }, [inputProps]);
-
   useEffect(() => {
     if (!('value' in latestInputPropsRef.current)) {
       return;
@@ -54,9 +66,9 @@ function CountryPhoneInput({
       return;
     }
     if (value.short) {
-      setArea(areas.find((area) => area.short === value.short));
+      setArea(compactAreas.find((area) => area.short === value.short));
     } else {
-      setArea(areas.find((area) => area.phoneCode === value.code));
+      setArea(compactAreas.find((area) => area.phoneCode === value.code));
     }
     setPhone(value.phone);
   }, [inputProps.value]);
@@ -75,7 +87,7 @@ function CountryPhoneInput({
 
   const handleAreaChange = useCallback(
     (value: string) => {
-      const area = areas.find((area) => area.short === value);
+      const area = compactAreas.find((area) => area.short === value);
       if (!area) {
         return;
       }

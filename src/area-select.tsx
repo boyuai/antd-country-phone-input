@@ -1,21 +1,46 @@
 import { Select } from 'antd';
 import { OptionProps, SelectProps } from 'antd/es/select';
-import areas, { Area, LocaleType } from './sources';
+import { useEffect, useState } from 'react';
+import {
+  defaultAreas,
+  searchArea,
+  Area,
+  LocaleType,
+  LocaleEnum,
+} from './sources';
 
 export interface AreaSelectProps extends SelectProps<any> {
   locale?: LocaleType;
   optionProps?: OptionProps;
   filterArea?: (value: Area, index: number, array: Area[]) => boolean;
-  // areaProcessor?: (value: Area) => Area;
+  areaProcessor?: (value: Area) => Area;
 }
 
 const AreaSelect = ({
   optionProps,
-  locale,
+  locale = 'en',
   filterArea,
-  // areaProcessor,
+  areaProcessor,
   ...selectProps
 }: AreaSelectProps) => {
+  const [areas, setAreas] = useState(defaultAreas);
+  useEffect(() => {
+    if (!(locale in LocaleEnum)) return;
+    import(`world_countries_lists/data/${locale}/world.json`).then(
+      (worldJson) => {
+        setAreas(
+          defaultAreas.map((area) => ({
+            ...area,
+            [locale]: searchArea(
+              { alpha2: area.short.toLowerCase() },
+              worldJson.default
+            ).name,
+          }))
+        );
+      }
+    );
+  }, [locale]);
+
   return (
     <Select
       showArrow
@@ -33,11 +58,9 @@ const AreaSelect = ({
         .filter((value: Area, index: number, array: Area[]) => {
           return filterArea ? filterArea(value, index, array) : true;
         })
-        .map((item) => {
-          // const item = areaProcessor?.(_item) || _item;
-          const key = `${locale === 'zh' ? item.zh : item.en} ${
-            item.phoneCode
-          }`;
+        .map((_item) => {
+          const item = areaProcessor?.(_item) || _item;
+          const key = `${item[locale]} ${item.phoneCode}`;
           const fixedProps = {
             key,
             value: item.short,
