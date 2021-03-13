@@ -56,7 +56,7 @@ function CountryPhoneInput({
     if (value.short) {
       setArea(areas.find((area) => area.short === value.short));
     } else {
-      setArea(areas.find((area) => Number(area.phoneCode) === value.code));
+      setArea(areas.find((area) => area.phoneCode === value.code));
     }
     setPhone(value.phone);
   }, [inputProps.value]);
@@ -65,7 +65,7 @@ function CountryPhoneInput({
     (phone?: string, area?: Area) => {
       const result: CountryPhoneInputValue = {
         phone,
-        code: Number(area?.phoneCode),
+        code: area?.phoneCode,
         short: area?.short,
       };
       onChange?.(result);

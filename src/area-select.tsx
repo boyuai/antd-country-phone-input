@@ -1,15 +1,19 @@
 import { Select } from 'antd';
 import { OptionProps, SelectProps } from 'antd/es/select';
-import areas, { LocaleType } from './sources';
+import areas, { Area, LocaleType } from './sources';
 
 export interface AreaSelectProps extends SelectProps<any> {
   locale?: LocaleType;
   optionProps?: OptionProps;
+  filterArea?: (value: Area, index: number, array: Area[]) => boolean;
+  // areaProcessor?: (value: Area) => Area;
 }
 
 const AreaSelect = ({
   optionProps,
   locale,
+  filterArea,
+  // areaProcessor,
   ...selectProps
 }: AreaSelectProps) => {
   return (
@@ -25,19 +29,26 @@ const AreaSelect = ({
       }}
       {...selectProps}
     >
-      {areas.map((item) => {
-        const key = `${locale === 'zh' ? item.zh : item.en} ${item.phoneCode}`;
-        const fixedProps = {
-          key,
-          value: item.short,
-          label: `${item.emoji} +${item.phoneCode}`,
-        };
-        return (
-          <Select.Option {...optionProps} {...fixedProps}>
-            {item.emoji} {key}
-          </Select.Option>
-        );
-      })}
+      {areas
+        .filter((value: Area, index: number, array: Area[]) => {
+          return filterArea ? filterArea(value, index, array) : true;
+        })
+        .map((item) => {
+          // const item = areaProcessor?.(_item) || _item;
+          const key = `${locale === 'zh' ? item.zh : item.en} ${
+            item.phoneCode
+          }`;
+          const fixedProps = {
+            key,
+            value: item.short,
+            label: `${item.emoji} +${item.phoneCode}`,
+          };
+          return (
+            <Select.Option {...optionProps} {...fixedProps}>
+              {item.emoji} {key}
+            </Select.Option>
+          );
+        })}
     </Select>
   );
 };

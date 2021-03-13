@@ -35,7 +35,12 @@ const App = () => {
         <CountryPhoneInput inline />
       </Card>
       <Card type="inner" title="Chinese Version" style={cardStyle}>
-        <CountryPhoneInput locale="zh" />
+        <CountryPhoneInput
+          locale="zh"
+          selectProps={{
+            filterArea: (area) => area.zh?.includes('中国') || false,
+          }}
+        />
       </Card>
       <Card type="inner" title="Controlled by Form" style={cardStyle}>
         <Paragraph>
