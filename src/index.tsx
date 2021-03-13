@@ -1,8 +1,9 @@
-import { useCallback, useState, useMemo, useEffect } from 'react';
+import { useCallback, useState, useMemo, useEffect, useRef } from 'react';
 import { Input } from 'antd';
-import { GroupProps, InputProps } from 'antd/lib/input';
+import { GroupProps, InputProps } from 'antd/es/input';
 import areas, { Area, LocaleType } from './sources';
 import AreaSelect, { AreaSelectProps } from './area-select';
+import './styles.less';
 
 export * from './sources';
 
@@ -36,13 +37,17 @@ function CountryPhoneInput({
 
   const [area, setArea] = useState<Area | undefined>(defaultArea);
   const [phone, setPhone] = useState<string | undefined>();
+  const latestInputPropsRef = useRef(inputProps);
+  useEffect(() => {
+    latestInputPropsRef.current = inputProps;
+  }, [inputProps]);
 
   useEffect(() => {
-    if (!('value' in inputProps)) {
+    if (!('value' in latestInputPropsRef.current)) {
       return;
     }
 
-    const { value } = inputProps;
+    const value = inputProps.value;
     if (value === undefined) {
       setArea(undefined);
       setPhone(undefined);
@@ -54,13 +59,13 @@ function CountryPhoneInput({
       setArea(areas.find((area) => Number(area.phoneCode) === value.code));
     }
     setPhone(value.phone);
-  }, [inputProps]);
+  }, [inputProps.value]);
 
   const triggerChange = useCallback(
     (phone?: string, area?: Area) => {
       const result: CountryPhoneInputValue = {
         phone,
-        code: area && Number(area.phoneCode),
+        code: Number(area?.phoneCode),
         short: area?.short,
       };
       onChange?.(result);
@@ -89,42 +94,27 @@ function CountryPhoneInput({
     [setPhone, area, triggerChange]
   );
 
-  const areaSelectProps: Partial<AreaSelectProps> = {
-    ...selectProps,
-    value: area?.short,
-    onChange: handleAreaChange,
-  };
-
-  const phoneInputProps: Partial<InputProps> = {
-    ...inputProps,
-    value: inputProps.value?.phone,
-    onChange: handlePhoneChange,
-  };
+  const areaSelect = (
+    <AreaSelect
+      {...selectProps}
+      value={area?.short}
+      onChange={handleAreaChange}
+    />
+  );
 
   if (inline) {
-    return (
-      <Input.Group
-        compact
-        className="antd-country-phone-input"
-        {...inputGroupProps}
-      >
-        <AreaSelect
-          className="inline-area-select"
-          style={{ width: 95 }}
-          bordered
-          {...areaSelectProps}
-        />
-        <Input
-          className="inline-phone-input"
-          style={{ width: 'calc(100% - 95px)' }}
-          {...phoneInputProps}
-        />
-      </Input.Group>
-    );
+    inputProps.addonBefore = areaSelect;
+  } else {
+    inputProps.prefix = areaSelect;
   }
 
   return (
-    <Input prefix={<AreaSelect {...areaSelectProps} />} {...phoneInputProps} />
+    <Input
+      {...inputProps}
+      className="antd-country-phone-input"
+      value={inputProps.value?.phone}
+      onChange={handlePhoneChange}
+    />
   );
 }
 
