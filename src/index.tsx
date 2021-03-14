@@ -5,6 +5,7 @@ import compactAreas, { Area, LocaleType } from './sources';
 import AreaSelect, { AreaSelectProps } from './area-select';
 import './styles.less';
 
+export * from './area-select';
 export * from './sources';
 
 interface PropTypes

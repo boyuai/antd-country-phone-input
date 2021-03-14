@@ -5007,6 +5007,11 @@ find-up@^3.0.0:
   dependencies:
     locate-path "^3.0.0"
 
+flagpack@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/flagpack/-/flagpack-1.0.5.tgz#c122c5eda7aec2293bbefbfe13f35f4fff51cfd1"
+  integrity sha512-jrb3OEoVXPBXjmhwZq6C9DTH6Axarh+rfnT3kA5T4xQ2FD9MogwCasqNJnMvhHHkaEVryXwQf1MQvqVv8UsK3g==
+
 flat-cache@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/flat-cache/-/flat-cache-3.0.4.tgz#61b0338302b2fe9f957dcc32fc2a87f1c3048b11"
@@ -11348,6 +11353,11 @@ worker-rpc@^0.1.0:
   integrity sha512-P1WjMrUB3qgJNI9jfmpZ/htmBEjFh//6l/5y8SD9hg1Ef5zTTVVoRjTrTEzPrNBQvmhMxkoTsjOXN10GWU7aCg==
   dependencies:
     microevent.ts "~0.1.1"
+
+world_countries_lists@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/world_countries_lists/-/world_countries_lists-2.1.0.tgz#f93447bc7e40955fc9edde99351ece4ab67e4cda"
+  integrity sha512-z0/Nsq4JIqQxWV4CYw/Y+VlRwIN/YBYl4QGglBlYJ/Yu6PW1N5AAzSmvXygGdD+5CY++qMHycVag3L1p37VIkw==
 
 wrap-ansi@^5.1.0:
   version "5.1.0"

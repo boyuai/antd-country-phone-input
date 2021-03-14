@@ -1,13 +1,8 @@
 import { Select } from 'antd';
 import { OptionProps, SelectProps } from 'antd/es/select';
 import { useEffect, useState } from 'react';
-import {
-  defaultAreas,
-  searchArea,
-  Area,
-  LocaleType,
-  LocaleEnum,
-} from './sources';
+import { defaultAreas, Area, LocaleType, LocaleEnum } from './sources';
+import { searchArea } from './third-party';
 
 export interface AreaSelectProps extends SelectProps<any> {
   locale?: LocaleType;
@@ -16,7 +11,7 @@ export interface AreaSelectProps extends SelectProps<any> {
   areaProcessor?: (value: Area) => Area;
 }
 
-const AreaSelect = ({
+export const AreaSelect = ({
   optionProps,
   locale = 'en',
   filterArea,
@@ -34,7 +29,7 @@ const AreaSelect = ({
             [locale]: searchArea(
               { alpha2: area.short.toLowerCase() },
               worldJson.default
-            ).name,
+            )?.name,
           }))
         );
       }
@@ -42,37 +37,50 @@ const AreaSelect = ({
   }, [locale]);
 
   return (
-    <Select
-      showArrow
-      showSearch
-      bordered={false}
-      dropdownMatchSelectWidth={false}
-      optionLabelProp="label"
-      filterOption={(input, option) => {
-        const key = option?.key;
-        return (key as string).toLowerCase().indexOf(input.toLowerCase()) >= 0;
+    <span
+      onMouseUp={(e) => {
+        // workaround for this: https://github.com/ant-design/ant-design/commit/ed1959c13e938a2f1d71c315bc79cb621853ec8f
+        e.stopPropagation();
       }}
-      {...selectProps}
     >
-      {areas
-        .filter((value: Area, index: number, array: Area[]) => {
-          return filterArea ? filterArea(value, index, array) : true;
-        })
-        .map((_item) => {
-          const item = areaProcessor?.(_item) || _item;
-          const key = `${item[locale]} ${item.phoneCode}`;
-          const fixedProps = {
-            key,
-            value: item.short,
-            label: `${item.emoji} +${item.phoneCode}`,
-          };
+      <Select
+        showArrow
+        showSearch
+        bordered={false}
+        dropdownMatchSelectWidth={false}
+        optionLabelProp="label"
+        filterOption={(input, option) => {
+          const key = option?.key;
           return (
-            <Select.Option {...optionProps} {...fixedProps}>
-              {item.emoji} {key}
-            </Select.Option>
+            (key as string).toLowerCase().indexOf(input.toLowerCase()) >= 0
           );
-        })}
-    </Select>
+        }}
+        {...selectProps}
+      >
+        {areas
+          .filter((value: Area, index: number, array: Area[]) => {
+            return filterArea ? filterArea(value, index, array) : true;
+          })
+          .map((_item) => {
+            const item = areaProcessor?.(_item) || _item;
+            const key = `${item[locale]} ${item.phoneCode}`;
+            const fixedProps = {
+              key,
+              value: item.short,
+              label: (
+                <>
+                  {item.emoji} +{item.phoneCode}
+                </>
+              ),
+            };
+            return (
+              <Select.Option {...optionProps} {...fixedProps}>
+                {item.emoji} {key}
+              </Select.Option>
+            );
+          })}
+      </Select>
+    </span>
   );
 };
 

@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export enum LocaleEnum {
   'ar',
   'cs',
@@ -38,39 +40,8 @@ export type LocaleProps = {
 export type Area = {
   short: string;
   phoneCode: number;
-  emoji: string;
+  emoji: ReactNode;
 } & LocaleProps;
-
-/**
- * @see https://github.com/stefangabos/world_countries#json
- */
-export function searchArea(query: any, areas: any) {
-  // if argument is not valid return false
-  if (
-    undefined === query.id &&
-    undefined === query.alpha2 &&
-    undefined === query.alpha3
-  )
-    return undefined;
-
-  return areas
-    .filter(function (country: any) {
-      return (
-        // we are searching by ID and we have a match
-        (undefined !== query.id &&
-          parseInt(country.id, 10) === parseInt(query.id, 10)) ||
-        // or we are searching by alpha2 and we have a match
-        (undefined !== query.alpha2 &&
-          country.alpha2 === query.alpha2.toLowerCase()) ||
-        // or we are searching by alpha3 and we have a match
-        (undefined !== query.alpha3 &&
-          country.alpha3 === query.alpha3.toLowerCase())
-      );
-
-      // since "filter" returns an array we use pop to get just the data object
-    })
-    .pop();
-}
 
 export const defaultAreas: Area[] = [
   {
