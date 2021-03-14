@@ -4,6 +4,7 @@
   "version": "3.4.0",
   "description": "Country phone input component as standard Ant.Design form item",
   "author": "wangsijie <i@sijie.wang>",
+  "homepage": "https://boyuai.github.io/antd-country-phone-input/",
   "repository": "git@github.com:boyuai/antd-country-phone-input.git",
   "keywords": [
     "antd",
