@@ -8,7 +8,7 @@ import './styles.less';
 export * from './area-select';
 export * from './sources';
 
-interface PropTypes
+export interface CountryPhoneInputProps
   extends Omit<InputProps, 'defaultValue' | 'value' | 'onChange'> {
   onChange?: (value: CountryPhoneInputValue) => void;
   value?: CountryPhoneInputValue;
@@ -33,7 +33,7 @@ function CountryPhoneInput({
   inline,
   locale,
   ...inputProps
-}: PropTypes) {
+}: CountryPhoneInputProps) {
   selectProps.locale = locale;
   if (defaultValue) {
     defaultValue.short = defaultValue.short?.toUpperCase();
