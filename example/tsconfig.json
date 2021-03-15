@@ -3,7 +3,6 @@
     // Project Options
     "allowJs": true,
     "declaration": true,
-    "outDir": "dist",
     "module": "ESNext",
     "target": "ES5",
     "lib": [
