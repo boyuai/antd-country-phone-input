@@ -42,12 +42,12 @@ const App = () => {
         <CountryPhoneInput
           locale="zh"
           selectProps={{
-            filterArea: (area) => area.zh?.includes('中国') || false,
+            filterArea: (area) => area.name?.includes('中国') || false,
             areaProcessor: (area) => {
-              if (area.zh?.includes('台湾')) {
+              if (area.name?.includes('台湾')) {
                 return {
                   ...area,
-                  zh: '中国台湾',
+                  name: '中国台湾',
                   emoji: '🇨🇳',
                 };
               }

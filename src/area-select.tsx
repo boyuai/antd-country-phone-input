@@ -26,7 +26,7 @@ export const AreaSelect = ({
         setAreas(
           defaultAreas.map((area) => ({
             ...area,
-            [locale]: searchArea(
+            name: searchArea(
               { alpha2: area.short.toLowerCase() },
               worldJson.default
             )?.name,
@@ -63,7 +63,7 @@ export const AreaSelect = ({
           })
           .map((_item) => {
             const item = areaProcessor?.(_item) || _item;
-            const key = `${item[locale]} ${item.phoneCode}`;
+            const key = `${item.name} ${item.phoneCode}`;
             const fixedProps = {
               key,
               value: item.short,

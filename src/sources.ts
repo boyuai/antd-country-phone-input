@@ -41,7 +41,8 @@ export type Area = {
   short: string;
   phoneCode: number;
   emoji: ReactNode;
-} & LocaleProps;
+  name?: string;
+};
 
 export const defaultAreas: Area[] = [
   {
