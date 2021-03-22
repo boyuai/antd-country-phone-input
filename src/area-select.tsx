@@ -1,6 +1,6 @@
 import { Select } from 'antd';
 import { OptionProps, SelectProps } from 'antd/es/select';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { defaultAreas, Area, LocaleType, LocaleEnum } from './sources';
 import { searchArea } from './third-party';
 

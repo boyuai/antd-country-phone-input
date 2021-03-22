@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect, useRef } from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import { Input } from 'antd';
 import { GroupProps, InputProps } from 'antd/es/input';
 import compactAreas, { Area, LocaleType } from './sources';

@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "name": "antd-country-phone-input",
-  "version": "3.4.2",
+  "version": "3.4.3",
   "description": "Country phone input component as standard Ant.Design form item",
   "author": "wangsijie <i@sijie.wang>",
   "homepage": "https://boyuai.github.io/antd-country-phone-input/",
@@ -24,8 +24,8 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle --format modern,es,cjs",
-    "start": "microbundle watch --format modern,es,cjs",
+    "build": "microbundle --format modern,es,cjs --jsx React.createElement",
+    "start": "microbundle watch --format modern,es,cjs --jsx React.createElement",
     "prepack": "yarn build",
     "lint:es": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:style": "stylelint '**/*.{css,less,scss,sass}'",

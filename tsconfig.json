@@ -10,8 +10,7 @@
       "DOM.Iterable",
       "ESNext"
     ],
-    "jsx": "react-jsx",
-    "jsxFactory": "",
+    "jsx": "react",
     "sourceMap": true,
     "isolatedModules": true,
     "noEmit": true,
