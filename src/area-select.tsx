@@ -1,8 +1,8 @@
 import { Select } from 'antd';
 import { OptionProps, SelectProps } from 'antd/es/select';
 import React, { useEffect, useState } from 'react';
-import { defaultAreas, Area, LocaleType, LocaleEnum } from './sources';
-import { searchArea } from './third-party';
+import { defaultAreas, Area } from './sources';
+import { LocaleEnum, LocaleType, searchArea } from './third-party';
 
 export interface AreaSelectProps extends SelectProps<any> {
   locale?: LocaleType;
@@ -50,10 +50,15 @@ export const AreaSelect = ({
         dropdownMatchSelectWidth={false}
         optionLabelProp="label"
         filterOption={(input, option) => {
-          const key = option?.key;
-          return (
-            (key as string).toLowerCase().indexOf(input.toLowerCase()) >= 0
-          );
+          const key = (option?.key as string).toLowerCase();
+          const inputChars = Array.from(input.toLowerCase());
+          const keyHasAllChars = inputChars.reduce((prevResult, char) => {
+            if (prevResult === undefined) {
+              return true;
+            }
+            return prevResult && key.includes(char);
+          }, true);
+          return keyHasAllChars;
         }}
         {...selectProps}
       >

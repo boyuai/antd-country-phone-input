@@ -1,8 +1,9 @@
 import React, { useCallback, useState, useEffect, useRef } from 'react';
 import { Input } from 'antd';
 import { GroupProps, InputProps } from 'antd/es/input';
-import compactAreas, { Area, LocaleType } from './sources';
 import AreaSelect, { AreaSelectProps } from './area-select';
+import compactAreas, { Area } from './sources';
+import { LocaleType } from './third-party';
 import './styles.less';
 
 export * from './area-select';

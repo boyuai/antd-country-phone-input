@@ -1,3 +1,44 @@
+/**
+ * @see https://github.com/stefangabos/world_countries
+ */
+
+export enum LocaleEnum {
+  'ar',
+  'cs',
+  'da',
+  'de',
+  'ee',
+  'el',
+  'en',
+  'es',
+  'eu',
+  'fi',
+  'fr',
+  'hu',
+  'it',
+  'ja',
+  'ko',
+  'lt',
+  'nl',
+  'no',
+  'pl',
+  'pt',
+  'ro',
+  'ru',
+  'sk',
+  'sv',
+  'th',
+  'uk',
+  'zh-tw',
+  'zh',
+}
+
+export type LocaleType = keyof typeof LocaleEnum;
+
+export type LocaleProps = {
+  [K in LocaleType]?: string;
+};
+
 type ThirdPartyArea = {
   id: string;
   alpha2: string;
@@ -5,9 +46,6 @@ type ThirdPartyArea = {
   name: string;
 };
 
-/**
- * @see https://github.com/stefangabos/world_countries#json
- */
 export function searchArea(
   query: Partial<ThirdPartyArea>,
   areas: ThirdPartyArea[]
