@@ -1,1 +1,0 @@
-./dumi/docs/index.md
