@@ -7,10 +7,14 @@
   "homepage": "https://boyuai.github.io/antd-country-phone-input/",
   "repository": "git@github.com:boyuai/antd-country-phone-input.git",
   "keywords": [
+    "react",
     "antd",
     "ant-design",
+    "country",
     "country-code",
-    "phone"
+    "phone",
+    "phone-number",
+    "input"
   ],
   "main": "./dist/index.js",
   "module": "./dist/index.m.js",
