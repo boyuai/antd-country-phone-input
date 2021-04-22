@@ -1,5 +1,6 @@
 import { Card } from 'antd';
 
+import { ConfigProvider } from 'antd-country-phone-input';
 import BasicUsage from './demos/basic-usage';
 import InlineStyle from './demos/inline-style';
 import CustomArea from './demos/custom-area';
@@ -10,7 +11,7 @@ const cardStyle = { marginBottom: 6 };
 
 const App = () => {
   return (
-    <>
+    <ConfigProvider locale="zh">
       <Card type="inner" title="Basic Usage" style={cardStyle}>
         <BasicUsage />
       </Card>
@@ -26,7 +27,7 @@ const App = () => {
       <Card type="inner" title="Custom Flag" style={cardStyle}>
         <CustomFlag />
       </Card>
-    </>
+    </ConfigProvider>
   );
 };
 

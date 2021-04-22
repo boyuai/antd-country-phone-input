@@ -7,6 +7,7 @@ import { LocaleType } from './third-party';
 import './styles.less';
 
 export * from './area-select';
+export * from './config';
 export * from './sources';
 
 export interface CountryPhoneInputProps

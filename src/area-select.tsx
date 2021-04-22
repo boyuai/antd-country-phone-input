@@ -1,27 +1,38 @@
 import { Select } from 'antd';
 import { OptionProps, SelectProps } from 'antd/es/select';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AreaFilter, AreaMapper, configContext } from './config';
 import { defaultAreas, Area } from './sources';
 import { LocaleEnum, LocaleType, searchArea } from './third-party';
 
 export interface AreaSelectProps extends SelectProps<any> {
   locale?: LocaleType;
   optionProps?: OptionProps;
-  filterArea?: (value: Area, index: number, array: Area[]) => boolean;
-  areaProcessor?: (value: Area) => Area;
+  // rename to areaFilter in next big version?
+  filterArea?: AreaFilter;
+  // rename to areaMapper in next big version?
+  areaProcessor?: AreaMapper;
 }
 
 export const AreaSelect = ({
   optionProps,
-  locale = 'en',
+  locale,
   filterArea,
   areaProcessor,
   ...selectProps
 }: AreaSelectProps) => {
+  const {
+    locale: globalLocale,
+    areaFilter: globalAreaFilter,
+    areaMapper: globalAreaMapper,
+  } = useContext(configContext);
   const [areas, setAreas] = useState(defaultAreas);
+  const combinedLocale = locale || globalLocale;
+  const combinedAreaFilter = filterArea || globalAreaFilter;
+  const combinedAreaMapper = areaProcessor || globalAreaMapper;
   useEffect(() => {
-    if (!(locale in LocaleEnum)) return;
-    import(`world_countries_lists/data/${locale}/world.json`).then(
+    if (!(combinedLocale in LocaleEnum)) return;
+    import(`world_countries_lists/data/${combinedLocale}/world.json`).then(
       (worldJson) => {
         setAreas(
           defaultAreas.map((area) => ({
@@ -34,7 +45,7 @@ export const AreaSelect = ({
         );
       }
     );
-  }, [locale]);
+  }, [combinedLocale]);
 
   return (
     <span
@@ -64,10 +75,10 @@ export const AreaSelect = ({
       >
         {areas
           .filter((value: Area, index: number, array: Area[]) => {
-            return filterArea ? filterArea(value, index, array) : true;
+            return combinedAreaFilter(value, index, array);
           })
           .map((_item) => {
-            const item = areaProcessor?.(_item) || _item;
+            const item = combinedAreaMapper(_item);
             const key = `${item.name} ${item.phoneCode}`;
             const fixedProps = {
               key,
