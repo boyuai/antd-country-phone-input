@@ -3,10 +3,10 @@ import { Input } from 'antd';
 import { GroupProps, InputProps } from 'antd/es/input';
 import AreaSelect, { AreaSelectProps } from './area-select';
 import compactAreas, { Area } from './sources';
-import { LocaleType } from './third-party';
 import './styles.less';
 
 export * from './area-select';
+export * from './config';
 export * from './sources';
 
 export interface CountryPhoneInputProps
@@ -17,7 +17,6 @@ export interface CountryPhoneInputProps
   selectProps?: AreaSelectProps;
   inputGroupProps?: GroupProps;
   inline?: boolean;
-  locale?: LocaleType;
 }
 
 export type CountryPhoneInputValue = {
@@ -32,10 +31,8 @@ function CountryPhoneInput({
   selectProps = {},
   inputGroupProps,
   inline,
-  locale,
   ...inputProps
 }: CountryPhoneInputProps) {
-  selectProps.locale = locale;
   if (defaultValue) {
     defaultValue.short = defaultValue.short?.toUpperCase();
   }

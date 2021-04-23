@@ -1,40 +1,17 @@
 import { Select } from 'antd';
 import { OptionProps, SelectProps } from 'antd/es/select';
-import React, { useEffect, useState } from 'react';
-import { defaultAreas, Area } from './sources';
-import { LocaleEnum, LocaleType, searchArea } from './third-party';
+import React, { useContext } from 'react';
+import { configContext } from './config';
 
 export interface AreaSelectProps extends SelectProps<any> {
-  locale?: LocaleType;
   optionProps?: OptionProps;
-  filterArea?: (value: Area, index: number, array: Area[]) => boolean;
-  areaProcessor?: (value: Area) => Area;
 }
 
 export const AreaSelect = ({
   optionProps,
-  locale = 'en',
-  filterArea,
-  areaProcessor,
   ...selectProps
 }: AreaSelectProps) => {
-  const [areas, setAreas] = useState(defaultAreas);
-  useEffect(() => {
-    if (!(locale in LocaleEnum)) return;
-    import(`world_countries_lists/data/${locale}/world.json`).then(
-      (worldJson) => {
-        setAreas(
-          defaultAreas.map((area) => ({
-            ...area,
-            name: searchArea(
-              { alpha2: area.short.toLowerCase() },
-              worldJson.default
-            )?.name,
-          }))
-        );
-      }
-    );
-  }, [locale]);
+  const { areas } = useContext(configContext);
 
   return (
     <span
@@ -60,30 +37,30 @@ export const AreaSelect = ({
           }, true);
           return keyHasAllChars;
         }}
+        filterSort={(a, b) => {
+          const keyA = a.key as string;
+          const keyB = b.key as string;
+          return keyA.length - keyB.length;
+        }}
         {...selectProps}
       >
-        {areas
-          .filter((value: Area, index: number, array: Area[]) => {
-            return filterArea ? filterArea(value, index, array) : true;
-          })
-          .map((_item) => {
-            const item = areaProcessor?.(_item) || _item;
-            const key = `${item.name} ${item.phoneCode}`;
-            const fixedProps = {
-              key,
-              value: item.short,
-              label: (
-                <>
-                  {item.emoji} +{item.phoneCode}
-                </>
-              ),
-            };
-            return (
-              <Select.Option {...optionProps} {...fixedProps}>
-                {item.emoji} {key}
-              </Select.Option>
-            );
-          })}
+        {areas.map((item) => {
+          const key = `${item.name} ${item.phoneCode}`;
+          const fixedProps = {
+            key,
+            value: item.short,
+            label: (
+              <>
+                {item.emoji} +{item.phoneCode}
+              </>
+            ),
+          };
+          return (
+            <Select.Option {...optionProps} {...fixedProps}>
+              {item.emoji} {key}
+            </Select.Option>
+          );
+        })}
       </Select>
     </span>
   );
