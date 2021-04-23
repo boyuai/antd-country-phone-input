@@ -25,28 +25,36 @@ yarn add antd-country-phone-input
 
 ## Usage
 
-```tsx | pure
-import React, { useState } from 'react';
-import CountryPhoneInput, {
-  CountryPhoneInputValue,
-} from 'antd-country-phone-input';
+> **Breaking Changes:** For better performance and avoid unnecessary encapsulation, `locale` and area customization APIs are moved to `ConfigProvider`(based on React Context).
 
-// Usually you only need to do it once in App.js/App.tsx
+```tsx | pure
+import CountryPhoneInput, { ConfigProvider } from 'antd-country-phone-input';
+
+// Usually you only need to import ConfigProvider & CSS once in App.js/App.tsx
+// CSS order is important!
 import 'antd/dist/antd.css';
 import 'antd-country-phone-input/dist/index.css';
 
 const App = () => {
-  const [value, setValue] = useState<CountryPhoneInputValue>({ short: 'CN' });
-
   return (
-    <CountryPhoneInput
-      value={value}
-      onChange={(v) => {
-        setValue(v);
-      }}
-    />
+    <ConfigProvider locale="zh">
+      <CountryPhoneInput />
+    </ConfigProvider>
   );
 };
 
 export default App;
 ```
+
+### Value
+
+| Field | Type | Note |
+| --- | ---- | --- |
+| short | string | See [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+| phoneCode | number |
+| emoji | ReactNode | National flag
+| name | string |
+
+## Supported Languages
+
+Please check the typescript definition in [source codes](https://github.com/boyuai/antd-country-phone-input/blob/master/src/third-party.ts).

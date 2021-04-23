@@ -1,26 +1,23 @@
-import React, { ReactNode, Reducer, useEffect, useReducer } from 'react';
-import { Area } from './sources';
-import { LocaleType } from './third-party';
-
-export type AreaFilter = (value: Area, index: number, array: Area[]) => boolean;
-export type AreaMapper = (value: Area) => Area;
+import React, {
+  ReactNode,
+  Reducer,
+  useEffect,
+  useReducer,
+  useState,
+} from 'react';
+import { Area, getAreas } from './sources';
+import { LocaleEnum, LocaleType } from './third-party';
 
 type State = {
-  locale: LocaleType;
-  areaFilter: AreaFilter;
-  areaMapper: AreaMapper;
+  areas: Area[];
 };
 
 const initialState: State = {
-  locale: 'en',
-  areaFilter: () => true,
-  areaMapper: (value) => value,
+  areas: [],
 };
 
 enum ActionKind {
-  SET_LOCALE,
-  SET_AREA_FILTER,
-  SET_AREA_MAPPER,
+  SET_AREAS,
 }
 
 type Action = {
@@ -32,22 +29,10 @@ function configReducer(state: State, action: Action): State {
   const { type, payload } = action;
 
   switch (type) {
-    case ActionKind.SET_LOCALE: {
+    case ActionKind.SET_AREAS: {
       return {
         ...state,
-        locale: payload,
-      };
-    }
-    case ActionKind.SET_AREA_FILTER: {
-      return {
-        ...state,
-        areaFilter: payload,
-      };
-    }
-    case ActionKind.SET_AREA_MAPPER: {
-      return {
-        ...state,
-        areaMapper: payload,
+        areas: payload,
       };
     }
     default:
@@ -58,11 +43,16 @@ function configReducer(state: State, action: Action): State {
 export const configContext = React.createContext(initialState);
 const { Provider } = configContext;
 
+export type AreaFilter = (value: Area, index: number, array: Area[]) => boolean;
+export type AreaMapper = (value: Area, index: number, array: Area[]) => Area;
+const defaultAreaFilter: AreaFilter = () => true;
+const defaultAreaMapper: AreaMapper = (area) => area;
+
 export const ConfigProvider = ({
   children,
-  locale,
-  areaFilter,
-  areaMapper,
+  locale = 'en',
+  areaFilter = defaultAreaFilter,
+  areaMapper = defaultAreaMapper,
 }: {
   children: ReactNode;
   locale?: LocaleType;
@@ -73,21 +63,21 @@ export const ConfigProvider = ({
     configReducer,
     initialState
   );
+  const [areas, setAreas] = useState<Area[]>([]);
 
   useEffect(() => {
-    if (!locale) return;
-    dispatch({ type: ActionKind.SET_LOCALE, payload: locale });
+    if (!(locale in LocaleEnum)) return;
+    getAreas(locale).then((payload) => {
+      setAreas(payload);
+    });
   }, [locale]);
 
   useEffect(() => {
-    if (!areaFilter) return;
-    dispatch({ type: ActionKind.SET_AREA_FILTER, payload: areaFilter });
-  }, [areaFilter]);
-
-  useEffect(() => {
-    if (!areaMapper) return;
-    dispatch({ type: ActionKind.SET_AREA_MAPPER, payload: areaMapper });
-  }, [areaMapper]);
+    const payload = areas
+      .filter((area, index, array) => areaFilter(area, index, array))
+      .map((area, index, array) => areaMapper(area, index, array));
+    dispatch({ type: ActionKind.SET_AREAS, payload });
+  }, [areas, areaFilter, areaMapper]);
 
   return <Provider value={state}>{children}</Provider>;
 };

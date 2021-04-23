@@ -1,8 +1,7 @@
-/* eslint-disable no-console */
 import { Button, Form, message } from 'antd';
-import CountryPhoneInput from 'antd-country-phone-input';
-import 'antd-country-phone-input/dist/index.css';
+import CountryPhoneInput, { ConfigProvider } from 'antd-country-phone-input';
 import 'antd/dist/antd.css';
+import 'antd-country-phone-input/dist/index.css';
 
 const App = () => {
   const onFinish = (values: any) => {
@@ -14,29 +13,31 @@ const App = () => {
   };
 
   return (
-    <Form
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      initialValues={{
-        lowerCase: {
-          short: 'us',
-        },
-        undefined: undefined,
-      }}
-    >
-      <Form.Item name="lowerCase">
-        <CountryPhoneInput />
-      </Form.Item>
-      <Form.Item name="undefined">
-        <CountryPhoneInput />
-      </Form.Item>
-      <Form.Item name="ignored">
-        <CountryPhoneInput />
-      </Form.Item>
-      <Button type="primary" htmlType="submit">
-        Submit
-      </Button>
-    </Form>
+    <ConfigProvider>
+      <Form
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        initialValues={{
+          lowerCase: {
+            short: 'us',
+          },
+          undefined: undefined,
+        }}
+      >
+        <Form.Item name="lowerCase">
+          <CountryPhoneInput />
+        </Form.Item>
+        <Form.Item name="undefined">
+          <CountryPhoneInput />
+        </Form.Item>
+        <Form.Item name="ignored">
+          <CountryPhoneInput />
+        </Form.Item>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </Form>
+    </ConfigProvider>
   );
 };
 
