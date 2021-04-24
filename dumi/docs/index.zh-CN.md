@@ -25,7 +25,7 @@ yarn add antd-country-phone-input
 
 ## 使用
 
-> **Breaking Changes:** 为了更好的性能，同时避免业务项目中不必要的二次封装，从 4.0 开始舍弃了 `CountryPhoneInput` 的 `locale` 等定制参数，需要在 App 入口包装一层 `ConfigProvider`。
+> **Breaking Changes:** 为了避免业务项目中不必要的二次封装，`4.0` 将经过翻译/处理的地区状态提升到了 `ConfigProvider` 中，在使用组件时需要在 App 入口挂载 `ConfigProvider`，挂载后内部 `CountryPhoneInput` 都可以使用相同的配置。
 
 ``` tsx | pure
 import CountryPhoneInput, { ConfigProvider } from 'antd-country-phone-input';
@@ -55,7 +55,7 @@ export default App;
 | emoji | ReactNode | 默认为国旗 emoji，支持自定义
 | name | string |
 
-## 支持哪些语言？
+### Locale
 
 请参考[源代码](https://github.com/boyuai/antd-country-phone-input/blob/master/src/third-party.ts)中的类型定义。
 

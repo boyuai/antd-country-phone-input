@@ -25,7 +25,7 @@ yarn add antd-country-phone-input
 
 ## Usage
 
-> **Breaking Changes:** For better performance and avoid unnecessary encapsulation, `locale` and area customization APIs are moved to `ConfigProvider`(based on React Context).
+> **Breaking Changes:** To avoid unnecessary encapsulation for different locales, `4.0` lifted areas state up to `ConfigProvider`(based on React Context).
 
 ```tsx | pure
 import CountryPhoneInput, { ConfigProvider } from 'antd-country-phone-input';
@@ -55,6 +55,6 @@ export default App;
 | emoji | ReactNode | National flag
 | name | string |
 
-## Supported Languages
+### Locale
 
 Please check the typescript definition in [source codes](https://github.com/boyuai/antd-country-phone-input/blob/master/src/third-party.ts).
