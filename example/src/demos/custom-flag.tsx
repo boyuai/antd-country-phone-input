@@ -28,7 +28,7 @@ const App = () => {
             emoji: (
               <img
                 alt="flag"
-                style={{ width: 18, height: 18 }}
+                style={{ width: 18, height: 18, verticalAlign: 'sub' }}
                 src={
                   // world_countries_lists is already installed for locales.
                   // Dumi(our doc site generator) can not bundle this kind of assets currently, but it works in CRA project.
