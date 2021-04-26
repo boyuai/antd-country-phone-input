@@ -1,18 +1,11 @@
 import { ReactNode } from 'react';
-import { LocaleType, searchArea } from './third-party';
+import { searchArea } from './third-party';
 
-export const getAreas = async (locale: LocaleType) => {
-  return import(`world_countries_lists/data/${locale}/world.json`).then(
-    (worldJson) => {
-      return defaultAreas.map((area) => ({
-        ...area,
-        name: searchArea(
-          { alpha2: area.short.toLowerCase() },
-          worldJson.default
-        )?.name,
-      }));
-    }
-  );
+export const getAreas = (locale: any) => {
+  return defaultAreas.map((area) => ({
+    ...area,
+    name: searchArea({ alpha2: area.short.toLowerCase() }, locale)?.name,
+  }));
 };
 
 export type Area = {

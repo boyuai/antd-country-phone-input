@@ -6,7 +6,6 @@ import React, {
   useState,
 } from 'react';
 import { Area, getAreas } from './sources';
-import { LocaleEnum, LocaleType } from './third-party';
 
 type State = {
   areas: Area[];
@@ -50,12 +49,12 @@ const defaultAreaMapper: AreaMapper = (area) => area;
 
 export const ConfigProvider = ({
   children,
-  locale = 'en',
+  locale = {},
   areaFilter = defaultAreaFilter,
   areaMapper = defaultAreaMapper,
 }: {
   children: ReactNode;
-  locale?: LocaleType;
+  locale?: any;
   areaFilter?: AreaFilter;
   areaMapper?: AreaMapper;
 }) => {
@@ -66,10 +65,7 @@ export const ConfigProvider = ({
   const [areas, setAreas] = useState<Area[]>([]);
 
   useEffect(() => {
-    if (!(locale in LocaleEnum)) return;
-    getAreas(locale).then((payload) => {
-      setAreas(payload);
-    });
+    setAreas(getAreas(locale));
   }, [locale]);
 
   useEffect(() => {

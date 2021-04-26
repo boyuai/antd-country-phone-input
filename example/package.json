@@ -22,7 +22,8 @@
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-scripts": "~4.0.1",
-    "typescript": "link:../node_modules/typescript"
+    "typescript": "link:../node_modules/typescript",
+    "world_countries_lists": "^2.1.0"
   },
   "devDependencies": {},
   "browserslist": {

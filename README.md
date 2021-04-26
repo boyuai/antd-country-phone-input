@@ -16,19 +16,22 @@ Country phone input component as standard Ant.Design form item.
 ## Installation
 
 ```bash
-npm install antd-country-phone-input
+npm install antd-country-phone-input world_countries_lists
 ```
 or
 ```bash
-yarn add antd-country-phone-input
+yarn add antd-country-phone-input world_countries_lists
 ```
 
 ## Usage
 
-> **Breaking Changes:** To avoid unnecessary encapsulation for different locales, `4.0` lifted areas state up to `ConfigProvider`(based on React Context).
+> **Breaking Changes:**
+> 1. To avoid unnecessary encapsulation for different locales, `4.0` lifted areas state up to `ConfigProvider`(based on React Context). You need to put it in the right place(index.js/App.js/...), then all components will have access to the provided config.
+> 2. `Tree Shaking` is supported in `4.1`, you need to install `world_countries_lists` explicitly. Thus, you could customize translation JSON and it is better than `areaMapper` in `ConfigProvider`.
 
 ```tsx | pure
 import CountryPhoneInput, { ConfigProvider } from 'antd-country-phone-input';
+import en from 'world_countries_lists/data/en/world.json';
 
 // Usually you only need to import ConfigProvider & CSS once in App.js/App.tsx
 // CSS order is important!
@@ -37,7 +40,7 @@ import 'antd-country-phone-input/dist/index.css';
 
 const App = () => {
   return (
-    <ConfigProvider locale="zh">
+    <ConfigProvider locale={en}>
       <CountryPhoneInput />
     </ConfigProvider>
   );
@@ -57,4 +60,8 @@ export default App;
 
 ### Locale
 
-Please check the typescript definition in [source codes](https://github.com/boyuai/antd-country-phone-input/blob/master/src/third-party.ts).
+See [`world_countries_lists`](https://github.com/stefangabos/world_countries)
+
+### Example
+
+https://github.com/boyuai/antd-country-phone-input/tree/master/example
