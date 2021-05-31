@@ -8,10 +8,7 @@ export default defineConfig({
   mode: 'doc',
   hash: true,
   publicPath: process.env.NODE_ENV === 'production' ? '/antd-country-phone-input/' : '/',
-  // Why publicPath only works with hash history? It should be fixed?!
-  history: {
-    type: 'hash',
-  },
+  base: process.env.NODE_ENV === 'production' ? '/antd-country-phone-input/' : '/',
   dynamicImportSyntax: {},
   chainWebpack(memo) {
     memo.plugins.delete('copy');

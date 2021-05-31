@@ -2,8 +2,10 @@
 
 Country phone input component as standard Ant.Design form item.
 
-[![dumi](https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square)](https://github.com/umijs/dumi) [![NPM version][npm-image]][npm-url] [![npm download][download-image]][download-url] [![build status][github-actions-image]][github-actions-url]
+[![dumi][dumi-image]][dumi-url] [![NPM version][npm-image]][npm-url] [![npm download][download-image]][download-url] [![build status][github-actions-image]][github-actions-url]
 
+[dumi-image]: https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square
+[dumi-url]: https://github.com/umijs/dumi
 [npm-image]: https://img.shields.io/npm/v/antd-country-phone-input.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/antd-country-phone-input
 [download-image]: https://img.shields.io/npm/dm/antd-country-phone-input.svg?style=flat-square
@@ -49,6 +51,8 @@ const App = () => {
 export default App;
 ```
 
+Try it on our website: https://boyuai.github.io/antd-country-phone-input/demos/
+
 ### Value
 
 | Field | Type | Note |
@@ -64,4 +68,4 @@ See [`world_countries_lists`](https://github.com/stefangabos/world_countries)
 
 ### Example
 
-https://github.com/boyuai/antd-country-phone-input/tree/master/example
+Have a look at [this](https://github.com/boyuai/antd-country-phone-input/tree/master/example)!

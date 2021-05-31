@@ -2,14 +2,16 @@
 
 符合 Ant Design Form 标准的手机号输入组件
 
-[![dumi](https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square)](https://github.com/umijs/dumi) [![NPM version][npm-image]][npm-url] [![npm download][download-image]][download-url] <!-- [![build status][github-actions-image]][github-actions-url] -->
+[![dumi][dumi-image]][dumi-url] [![NPM version][npm-image]][npm-url] [![npm download][download-image]][download-url] [![build status][github-actions-image]][github-actions-url]
 
-[npm-image]: http://img.shields.io/npm/v/antd-country-phone-input.svg?style=flat-square
-[npm-url]: http://npmjs.org/package/antd-country-phone-input
+[dumi-image]: https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square
+[dumi-url]: https://github.com/umijs/dumi
+[npm-image]: https://img.shields.io/npm/v/antd-country-phone-input.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/antd-country-phone-input
 [download-image]: https://img.shields.io/npm/dm/antd-country-phone-input.svg?style=flat-square
 [download-url]: https://npmjs.org/package/antd-country-phone-input
-<!-- [github-actions-image]: https://github.com/boyuai/antd-country-phone-input/workflows/CI/badge.svg
-[github-actions-url]: https://github.com/boyuai/antd-country-phone-input/actions -->
+[github-actions-image]: https://github.com/boyuai/antd-country-phone-input/workflows/CI/badge.svg
+[github-actions-url]: https://github.com/boyuai/antd-country-phone-input/actions
 
 ![Preview](https://staticcdn.boyuai.com/user-assets/6074/DvBU2V96oXmxMQ45rrnKUb/2021416-171631.png!png)
 
@@ -48,6 +50,8 @@ const App = () => {
 
 export default App;
 ```
+
+欢迎体验: https://boyuai.github.io/antd-country-phone-input/demos/
 
 ### Value
 

@@ -2594,10 +2594,10 @@
     react-router-dom "5.2.0"
     regenerator-runtime "0.13.5"
 
-"@umijs/preset-dumi@1.1.13":
-  version "1.1.13"
-  resolved "https://registry.yarnpkg.com/@umijs/preset-dumi/-/preset-dumi-1.1.13.tgz#c21d33144b351c65558a90d6c054d12c0a16d184"
-  integrity sha512-WjSH5MIWDNo4Apg2NOm+0kCbmqrIWCJWGb7WheSb95ETYHBPiYgLIYHUyPrVCTlZKkG2x6NdxneShC/qlF4nKg==
+"@umijs/preset-dumi@1.1.16":
+  version "1.1.16"
+  resolved "https://registry.yarnpkg.com/@umijs/preset-dumi/-/preset-dumi-1.1.16.tgz#5ffd26bd582bc441a0a6f4fe657057fc3a849ae9"
+  integrity sha512-FFINOjhAgdS4+tWMooRqE6nF3GEMBp1kepVV3ck+xVga8OuKgFdZ/NCxlMMQibyGvwvZV2DEKq3FYwPqTfiI6w==
   dependencies:
     "@babel/core" "^7.7.2"
     "@babel/generator" "^7.7.2"
@@ -2613,7 +2613,7 @@
     copy-text-to-clipboard "^2.2.0"
     deepmerge "^4.2.2"
     dumi-assets-types "1.0.0"
-    dumi-theme-default "1.0.13"
+    dumi-theme-default "1.0.16"
     enhanced-resolve "^4.1.1"
     github-slugger "^1.3.0"
     hast-util-has-property "^1.0.4"
@@ -2626,7 +2626,7 @@
     lz-string "^1.4.4"
     react-docgen-typescript "^1.20.5"
     rehype-autolink-headings "^4.0.0"
-    rehype-mathjax "^3.1.0"
+    rehype-mathjax-dumi-tmp "^3.1.1-0"
     rehype-remove-comments "^4.0.2"
     rehype-stringify "^8.0.0"
     remark-frontmatter "^3.0.0"
@@ -5251,21 +5251,21 @@ dumi-assets-types@1.0.0:
   resolved "https://registry.yarnpkg.com/dumi-assets-types/-/dumi-assets-types-1.0.0.tgz#d5368cb11045b203bf1ef1080e553b2287a2ec81"
   integrity sha512-7nhSeWM15vybbUAMPLZsdls2jKoHB2UU4P1RM6kLPucuS8eC/HSmufquFqTTYtX4oIDLHGtil/dVtMreNGwhdA==
 
-dumi-theme-default@1.0.13:
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/dumi-theme-default/-/dumi-theme-default-1.0.13.tgz#35c0721f7ee70eac7fa893be8c216ab40d594878"
-  integrity sha512-Z/iOpEDFm6HAh3SVk0XcwBR33lFOYMpdXZLcTSHy7UxVRVmsWmgaCvsFLkGnLL+B8AXW9BkKIq4b1e5xp1VJww==
+dumi-theme-default@1.0.16:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/dumi-theme-default/-/dumi-theme-default-1.0.16.tgz#8c844cc2cdb8c98db95c5189772b0b9d2a74669e"
+  integrity sha512-+jMMKsdGEgBHiqcSrpY7q03Y/8AQkNGdr/E5uhB0jRebPCu7nCNHAWefOFdvYeXZ4ViAfcCf3LrfBoteFbtxVQ==
   dependencies:
     prism-react-renderer "^1.1.1"
     prismjs "^1.21.0"
     rc-tabs "^11.7.1"
 
-dumi@^1.1.13:
-  version "1.1.13"
-  resolved "https://registry.yarnpkg.com/dumi/-/dumi-1.1.13.tgz#514d607691b0ea5ffe227729165ce86e5f66dcc0"
-  integrity sha512-6OVqFRv3dbE9nagcZasLcGljL9cLKgYZItZJsdhHUvssYRnbSwQsUrDr3TyGUp/jbdQtXOtWv+6dzx6gqHlrgQ==
+dumi@1.1.16:
+  version "1.1.16"
+  resolved "https://registry.yarnpkg.com/dumi/-/dumi-1.1.16.tgz#a4c5966c91f5143f1e992c48686323c15450cc04"
+  integrity sha512-MfIfiC5TYoMiV1hwI2C27xxU1cJ2hT3jf/4DZhxMX8lrsjyQel9MQHzIfnCyUXg8Len22o593wwgQjLo00NViQ==
   dependencies:
-    "@umijs/preset-dumi" "1.1.13"
+    "@umijs/preset-dumi" "1.1.16"
     umi "^3.0.0"
 
 duplexer@0.1.1:
@@ -8939,7 +8939,7 @@ markdown-table@^2.0.0:
   dependencies:
     repeat-string "^1.0.0"
 
-mathjax-full@^3.0.0:
+mathjax-full@3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/mathjax-full/-/mathjax-full-3.1.2.tgz#53ac5b38252379d515d60e99092672b42725bf6a"
   integrity sha512-jFCwRFdFwIOa8J7r6VZT0AIv9ZwbLQ9aPc9YZp695NTvv7XKU2NunJodA+zDWzElIFJ7mTsImyfe5R3QyRNZjw==
@@ -12180,16 +12180,16 @@ rehype-autolink-headings@^4.0.0:
     hast-util-is-element "^1.0.0"
     unist-util-visit "^2.0.0"
 
-rehype-mathjax@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/rehype-mathjax/-/rehype-mathjax-3.1.0.tgz#d0282243bf68f3f18dd63a062e0f8c45662ecc26"
-  integrity sha512-Pmz92Y56lBFmDjFc9nIdrKu1xzKSBYevcwKiKiG7b5JJg74q1E62nRSbPEm37vXaXn7Bn25iRsWcP39bJKkMxg==
+rehype-mathjax-dumi-tmp@^3.1.1-0:
+  version "3.1.1-0"
+  resolved "https://registry.yarnpkg.com/rehype-mathjax-dumi-tmp/-/rehype-mathjax-dumi-tmp-3.1.1-0.tgz#56958ebfdf089c39fe629f8fe0b423253d5f9679"
+  integrity sha512-NonV24f4zTOaDA5WGko/3Wh1wf5hrUYqcxJoTFs4cd97bZPR0gQytGcPO6z7xjcu5QP7+Af8IQRf35k9sijX6Q==
   dependencies:
     "@types/mathjax" "^0.0.36"
     hast-util-from-dom "^3.0.0"
     hast-util-to-text "^2.0.0"
     jsdom "^16.0.0"
-    mathjax-full "^3.0.0"
+    mathjax-full "3.1.2"
     unist-util-visit "^2.0.0"
 
 rehype-remove-comments@^4.0.2:
