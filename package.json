@@ -14,7 +14,9 @@
     "country-code",
     "phone",
     "phone-number",
-    "input"
+    "input",
+    "cpi",
+    "antd-cpi"
   ],
   "main": "./dist/index.js",
   "module": "./dist/index.m.js",
