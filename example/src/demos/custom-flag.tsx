@@ -8,6 +8,16 @@ import 'antd-country-phone-input/dist/index.css';
 import 'flagpack/dist/flagpack.css';
 
 const App = () => {
+  const getFlag = (short: string) => {
+    const data = require(`world_countries_lists/flags/24x24/${short.toLowerCase()}.png`);
+    // for dumi
+    if (typeof data === 'string') {
+      return data;
+    }
+    // for CRA
+    return data.default;
+  };
+
   return (
     <>
       <ConfigProvider
@@ -30,11 +40,7 @@ const App = () => {
               <img
                 alt="flag"
                 style={{ width: 18, height: 18, verticalAlign: 'sub' }}
-                src={
-                  // Dumi(our doc site generator) can not bundle this kind of assets currently, but it works in CRA project.
-                  require(`world_countries_lists/flags/24x24/${area.short.toLowerCase()}.png`)
-                    .default
-                }
+                src={getFlag(area.short)}
               />
             ),
           };
