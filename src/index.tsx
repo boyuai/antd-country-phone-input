@@ -17,6 +17,7 @@ export interface CountryPhoneInputProps
   selectProps?: AreaSelectProps;
   inputGroupProps?: GroupProps;
   inline?: boolean;
+  className?: string;
 }
 
 export type CountryPhoneInputValue = {
@@ -31,6 +32,7 @@ function CountryPhoneInput({
   selectProps = {},
   inputGroupProps,
   inline,
+  className,
   ...inputProps
 }: CountryPhoneInputProps) {
   if (defaultValue) {
@@ -122,7 +124,7 @@ function CountryPhoneInput({
   return (
     <Input
       {...inputProps}
-      className="antd-country-phone-input"
+      className={'antd-country-phone-input' + className ? ` ${className}` : ''}
       value={inputProps.value?.phone}
       onChange={handlePhoneChange}
     />
