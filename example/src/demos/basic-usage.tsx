@@ -18,7 +18,7 @@ const App = () => {
         onChange={(v) => {
           setValue(v);
         }}
-        className="my-custom-class"
+        className="your-custom-class"
       />
     </ConfigProvider>
   );

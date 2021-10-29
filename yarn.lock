@@ -11652,6 +11652,19 @@ rc-select@^12.0.0, rc-select@~12.1.0:
     rc-util "^5.0.1"
     rc-virtual-list "^3.2.0"
 
+rc-select@^12.1.13:
+  version "12.1.13"
+  resolved "https://registry.yarnpkg.com/rc-select/-/rc-select-12.1.13.tgz#c33560ccb9339d30695b52458f55efc35af35273"
+  integrity sha512-cPI+aesP6dgCAaey4t4upDbEukJe+XN0DK6oO/6flcCX5o28o7KNZD7JAiVtC/6fCwqwI/kSs7S/43dvHmBl+A==
+  dependencies:
+    "@babel/runtime" "^7.10.1"
+    classnames "2.x"
+    rc-motion "^2.0.1"
+    rc-overflow "^1.0.0"
+    rc-trigger "^5.0.4"
+    rc-util "^5.9.8"
+    rc-virtual-list "^3.2.0"
+
 rc-slider@~9.7.1:
   version "9.7.1"
   resolved "https://registry.yarnpkg.com/rc-slider/-/rc-slider-9.7.1.tgz#63535177a74a3ee44f090909e8c6f98426eb9dba"
@@ -11768,6 +11781,15 @@ rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.5, rc-util@^5.0.6, rc-util@^5.0.7, 
   version "5.8.1"
   resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.8.1.tgz#e3630abfb92b40becb31476cee136d65e80e02e0"
   integrity sha512-kXV/QjL+azh3AxMk68gm8+nltVoL6bjeJJULAZLRCLus2Fhvo/aaMZokxYov/E0dbfjo31I78pF4yVljqQB7bA==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    react-is "^16.12.0"
+    shallowequal "^1.1.0"
+
+rc-util@^5.9.8:
+  version "5.14.0"
+  resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.14.0.tgz#52c650e27570c2c47f7936c7d32eaec5212492a8"
+  integrity sha512-2vy6/Z1BJUcwLjm/UEJb/htjUTQPigITUIemCcFEo1fQevAumc9sA32x2z5qyWoa9uhrXbiAjSDpPIUqyg65sA==
   dependencies:
     "@babel/runtime" "^7.12.5"
     react-is "^16.12.0"

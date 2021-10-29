@@ -1,6 +1,7 @@
 import { Card } from 'antd';
 
 import BasicUsage from './demos/basic-usage';
+import LiteVersion from './demos/lite-version';
 import InlineStyle from './demos/inline-style';
 import CustomArea from './demos/custom-area';
 import CustomFlag from './demos/custom-flag';
@@ -25,6 +26,9 @@ const App = () => {
       </Card>
       <Card type="inner" title="Custom Flag" style={cardStyle}>
         <CustomFlag />
+      </Card>
+      <Card type="inner" title="Lite Version(without antd)" style={cardStyle}>
+        <LiteVersion />
       </Card>
     </>
   );

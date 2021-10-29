@@ -4,12 +4,20 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test"
   },
   "dependencies": {
+    "antd-country-phone-input": "link:..",
+    "flagpack": "^1.0.5",
+    "rc-select": "^12.1.13",
+    "react": "link:../node_modules/react",
+    "react-dom": "link:../node_modules/react-dom",
+    "world_countries_lists": "^2.1.0"
+  },
+  "devDependencies": {
+    "@craco/craco": "^6.4.0",
     "@testing-library/jest-dom": "link:../node_modules/@testing-library/jest-dom",
     "@testing-library/react": "link:../node_modules/@testing-library/react",
     "@testing-library/user-event": "link:../node_modules/@testing-library/user-event",
@@ -17,15 +25,10 @@
     "@types/node": "link:../node_modules/@types/node",
     "@types/react": "link:../node_modules/@types/react",
     "@types/react-dom": "link:../node_modules/@types/react-dom",
-    "antd-country-phone-input": "link:..",
-    "flagpack": "^1.0.5",
-    "react": "link:../node_modules/react",
-    "react-dom": "link:../node_modules/react-dom",
+    "craco-less": "^1.20.0",
     "react-scripts": "~4.0.1",
-    "typescript": "link:../node_modules/typescript",
-    "world_countries_lists": "^2.1.0"
+    "typescript": "link:../node_modules/typescript"
   },
-  "devDependencies": {},
   "browserslist": {
     "production": [
       ">0.2%",

@@ -2,6 +2,7 @@ import { Select } from 'antd';
 import { OptionProps, SelectProps } from 'antd/es/select';
 import React, { useContext } from 'react';
 import { configContext } from './config';
+import { filterOption, filterSort } from './shared';
 
 export interface AreaSelectProps extends SelectProps<any> {
   optionProps?: OptionProps;
@@ -26,22 +27,8 @@ export const AreaSelect = ({
         bordered={false}
         dropdownMatchSelectWidth={false}
         optionLabelProp="label"
-        filterOption={(input, option) => {
-          const key = (option?.key as string).toLowerCase();
-          const inputChars = Array.from(input.toLowerCase());
-          const keyHasAllChars = inputChars.reduce((prevResult, char) => {
-            if (prevResult === undefined) {
-              return true;
-            }
-            return prevResult && key.includes(char);
-          }, true);
-          return keyHasAllChars;
-        }}
-        filterSort={(a, b) => {
-          const keyA = a.key as string;
-          const keyB = b.key as string;
-          return keyA.length - keyB.length;
-        }}
+        filterOption={filterOption}
+        filterSort={filterSort}
         {...selectProps}
       >
         {areas.map((item) => {

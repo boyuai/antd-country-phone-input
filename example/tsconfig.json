@@ -23,8 +23,8 @@
     "strictNullChecks": true,
     // Linter Checks
     "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
     // Advanced
     "skipLibCheck": true,

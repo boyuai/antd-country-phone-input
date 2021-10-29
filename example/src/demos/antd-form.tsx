@@ -15,24 +15,20 @@ const App = () => {
 
   return (
     <ConfigProvider locale={en}>
-      <Form
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        initialValues={{
-          lowerCase: {
+      <Form onFinish={onFinish} onFinishFailed={onFinishFailed}>
+        <Form.Item
+          name="lowerCase"
+          initialValue={{
             short: 'us',
-          },
-          undefined: undefined,
-        }}
-      >
-        <Form.Item name="lowerCase">
+          }}
+        >
           <CountryPhoneInput />
         </Form.Item>
-        <Form.Item name="undefined">
-          <CountryPhoneInput />
+        <Form.Item name="undefined" initialValue={undefined}>
+          <CountryPhoneInput placeholder="initialValue is undefined" />
         </Form.Item>
         <Form.Item name="ignored">
-          <CountryPhoneInput />
+          <CountryPhoneInput placeholder="initialValue is ignored" />
         </Form.Item>
         <Button type="primary" htmlType="submit">
           Submit

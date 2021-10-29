@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "name": "antd-country-phone-input",
-  "version": "4.1.1",
+  "version": "4.2.0-rc.0",
   "description": "Country phone input component as standard Ant.Design form item",
   "author": "wangsijie <i@sijie.wang>",
   "homepage": "https://boyuai.github.io/antd-country-phone-input/",
@@ -20,8 +20,10 @@
   ],
   "main": "./dist/index.js",
   "module": "./dist/index.m.js",
-  "exports": "./dist/index.modern.js",
-  "source": "./src/index.tsx",
+  "exports": {
+    ".": "./dist/index.modern.js",
+    "./lite": "./dist/lite.modern.js"
+  },
   "typings": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -30,8 +32,8 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle --format modern,es,cjs --jsx React.createElement",
-    "start": "microbundle watch --format modern,es,cjs --jsx React.createElement",
+    "build": "microbundle build src/index.ts src/lite.ts --format modern,es,cjs --jsx React.createElement",
+    "start": "microbundle watch src/index.ts src/lite.ts --format modern,es,cjs --jsx React.createElement",
     "prepack": "yarn build",
     "lint:es": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:style": "stylelint '**/*.{css,less,scss,sass}'",
@@ -59,6 +61,7 @@
   },
   "peerDependencies": {
     "antd": "4.x",
+    "rc-select": "^12.1.13",
     "react": ">= 16.8.0 || 17.x",
     "world_countries_lists": "^2.1.0"
   },
@@ -92,6 +95,7 @@
     "lint-staged": "~10.5.3",
     "microbundle": "~0.13.0",
     "prettier": "~2.2.1",
+    "rc-select": "^12.1.13",
     "react": "~17.0.1",
     "react-dom": "~17.0.1",
     "react-scripts": "~4.0.1",
