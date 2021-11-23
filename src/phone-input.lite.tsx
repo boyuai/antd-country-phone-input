@@ -16,6 +16,7 @@ export interface CountryPhoneInputProps
   onChange?: (value: CountryPhoneInputValue) => void;
   selectProps?: AreaSelectProps;
   className?: string;
+  disabled?: boolean;
 }
 
 export const CountryPhoneInput = ({
@@ -23,6 +24,7 @@ export const CountryPhoneInput = ({
   onChange,
   selectProps = {},
   className,
+  disabled,
   ...inputProps
 }: CountryPhoneInputProps) => {
   const isControlled = 'value' in inputProps;
@@ -39,6 +41,7 @@ export const CountryPhoneInput = ({
       {...selectProps}
       value={area?.short}
       onChange={handleAreaChange}
+      disabled={disabled}
     />
   );
 
