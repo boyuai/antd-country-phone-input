@@ -16,6 +16,7 @@ export interface CountryPhoneInputProps
   inputGroupProps?: GroupProps;
   inline?: boolean;
   className?: string;
+  disabled?: boolean;
 }
 
 export const CountryPhoneInput = ({
@@ -25,6 +26,7 @@ export const CountryPhoneInput = ({
   inputGroupProps,
   inline,
   className,
+  disabled,
   ...inputProps
 }: CountryPhoneInputProps) => {
   const isControlled = 'value' in inputProps;
@@ -39,6 +41,7 @@ export const CountryPhoneInput = ({
   const areaSelect = (
     <AreaSelect
       {...selectProps}
+      disabled={disabled}
       value={area?.short}
       onChange={handleAreaChange}
     />
