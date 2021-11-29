@@ -50,6 +50,7 @@ export const CountryPhoneInput = ({
       {areaSelect}
       <input
         {...inputProps}
+        disabled={disabled}
         className={
           'rc-country-phone-input' + (className ? ` ${className}` : '')
         }

@@ -56,6 +56,7 @@ export const CountryPhoneInput = ({
   return (
     <Input
       {...inputProps}
+      disabled={disabled}
       className={
         'antd-country-phone-input' + (className ? ` ${className}` : '')
       }
