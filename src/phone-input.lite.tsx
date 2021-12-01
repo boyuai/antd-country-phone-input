@@ -35,13 +35,14 @@ export const CountryPhoneInput = ({
     value,
     onChange,
   });
+  const commonProps = { disabled };
 
   const areaSelect = (
     <AreaSelect
+      {...commonProps}
       {...selectProps}
       value={area?.short}
       onChange={handleAreaChange}
-      disabled={disabled}
     />
   );
 
@@ -49,6 +50,7 @@ export const CountryPhoneInput = ({
     <>
       {areaSelect}
       <input
+        {...commonProps}
         {...inputProps}
         className={
           'rc-country-phone-input' + (className ? ` ${className}` : '')

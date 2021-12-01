@@ -37,11 +37,12 @@ export const CountryPhoneInput = ({
     value,
     onChange,
   });
+  const commonProps = { disabled };
 
   const areaSelect = (
     <AreaSelect
+      {...commonProps}
       {...selectProps}
-      disabled={disabled}
       value={area?.short}
       onChange={handleAreaChange}
     />
@@ -55,6 +56,7 @@ export const CountryPhoneInput = ({
 
   return (
     <Input
+      {...commonProps}
       {...inputProps}
       className={
         'antd-country-phone-input' + (className ? ` ${className}` : '')
