@@ -20,10 +20,6 @@
   ],
   "main": "./dist/index.js",
   "module": "./dist/index.m.js",
-  "exports": {
-    ".": "./dist/index.modern.js",
-    "./lite": "./dist/lite.modern.js"
-  },
   "typings": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -32,8 +28,8 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle build src/index.ts src/lite.ts --format modern,es,cjs --jsx React.createElement",
-    "start": "microbundle watch src/index.ts src/lite.ts --format modern,es,cjs --jsx React.createElement",
+    "build": "microbundle build src/index.ts src/lite.ts --format es,cjs --jsx React.createElement",
+    "start": "microbundle watch src/index.ts src/lite.ts --format es,cjs --jsx React.createElement",
     "prepack": "yarn build",
     "lint:es": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:style": "stylelint '**/*.{css,less,scss,sass}'",
