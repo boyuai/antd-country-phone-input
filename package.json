@@ -75,7 +75,7 @@
     "antd": "^4.13.1",
     "babel-eslint": "~10.1.0",
     "cross-env": "~7.0.3",
-    "dumi": "1.1.16",
+    "dumi": "^1.1.38",
     "eslint": "~7.11.0",
     "eslint-config-prettier": "~7.1.0",
     "eslint-config-react-app": "~6.0.0",
