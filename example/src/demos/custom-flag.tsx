@@ -1,5 +1,5 @@
 import CountryPhoneInput, { ConfigProvider } from 'antd-country-phone-input';
-import zhTW from 'world_countries_lists/data/zh-tw/world.json';
+import zhTW from 'world_countries_lists/data/countries/zh-tw/world.json';
 import 'antd/dist/antd.css';
 import 'antd-country-phone-input/dist/index.css';
 
@@ -9,7 +9,7 @@ import 'flagpack/dist/flagpack.css';
 
 const App = () => {
   const getFlag = (short: string) => {
-    const data = require(`world_countries_lists/flags/24x24/${short.toLowerCase()}.png`);
+    const data = require(`world_countries_lists/data/flags/24x24/${short.toLowerCase()}.png`);
     // for dumi
     if (typeof data === 'string') {
       return data;

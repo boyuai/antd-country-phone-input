@@ -5,7 +5,7 @@ import {
   CountryPhoneInputValue,
   CountryPhoneInput,
 } from 'antd-country-phone-input/dist/lite';
-import en from 'world_countries_lists/data/en/world.json';
+import en from 'world_countries_lists/data/countries/en/world.json';
 // If you're writing styles with less, this could be a starter for you.
 import 'rc-select/assets/index.less';
 

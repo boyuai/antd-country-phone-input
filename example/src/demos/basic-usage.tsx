@@ -4,7 +4,7 @@ import CountryPhoneInput, {
   CountryPhoneInputValue,
   ConfigProvider,
 } from 'antd-country-phone-input';
-import en from 'world_countries_lists/data/en/world.json';
+import en from 'world_countries_lists/data/countries/en/world.json';
 import 'antd/dist/antd.css';
 import 'antd-country-phone-input/dist/index.css';
 
