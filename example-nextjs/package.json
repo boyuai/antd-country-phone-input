@@ -10,6 +10,6 @@
     "next": "latest",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
-    "world_countries_lists": "^2.3.0"
+    "world_countries_lists": "^2.4.0"
   }
 }

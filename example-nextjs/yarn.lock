@@ -361,7 +361,7 @@ util-deprecate@^1.0.1:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
 
-world_countries_lists@^2.3.0:
-  version "2.3.0"
+world_countries_lists@^2.4.0:
+  version "2.4.0"
   resolved "https://registry.yarnpkg.com/world_countries_lists/-/world_countries_lists-2.3.0.tgz#8eca03dc6b77c5314cd43e01c2ba5c1c50f3910e"
   integrity sha512-8ZaWCBBZyZ/hQjRgUMaifF2qt7XlVQseYMXozc/r6WO7ONZPo6xlcQmB7wTMUDM7paqZqvxUcvNSewY3LTrvrA==

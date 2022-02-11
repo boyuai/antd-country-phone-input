@@ -11649,8 +11649,8 @@ worker-rpc@^0.1.0:
   dependencies:
     microevent.ts "~0.1.1"
 
-world_countries_lists@^2.1.0:
-  version "2.1.0"
+world_countries_lists@^2.4.0:
+  version "2.4.0"
   resolved "https://registry.yarnpkg.com/world_countries_lists/-/world_countries_lists-2.1.0.tgz#f93447bc7e40955fc9edde99351ece4ab67e4cda"
   integrity sha512-z0/Nsq4JIqQxWV4CYw/Y+VlRwIN/YBYl4QGglBlYJ/Yu6PW1N5AAzSmvXygGdD+5CY++qMHycVag3L1p37VIkw==
 

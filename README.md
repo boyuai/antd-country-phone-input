@@ -33,7 +33,7 @@ yarn add antd-country-phone-input world_countries_lists
 
 ```tsx | pure
 import CountryPhoneInput, { ConfigProvider } from 'antd-country-phone-input';
-import en from 'world_countries_lists/data/countries/en/world.json';
+import en from 'world_countries_lists/data/countries/en/world.json'; // As per the latest world_countries_lists version they have updated their data directory file structure
 
 // Usually you only need to import ConfigProvider & CSS once in App.js/App.tsx
 // CSS order is important!
