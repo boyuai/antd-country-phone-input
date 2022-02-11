@@ -1640,15 +1640,12 @@
 
 "@testing-library/jest-dom@link:../node_modules/@testing-library/jest-dom":
   version "0.0.0"
-  uid ""
 
 "@testing-library/react@link:../node_modules/@testing-library/react":
   version "0.0.0"
-  uid ""
 
 "@testing-library/user-event@link:../node_modules/@testing-library/user-event":
   version "0.0.0"
-  uid ""
 
 "@types/anymatch@*":
   version "1.3.1"
@@ -1747,7 +1744,6 @@
 
 "@types/jest@link:../node_modules/@types/jest":
   version "0.0.0"
-  uid ""
 
 "@types/json-schema@*", "@types/json-schema@^7.0.3", "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.6":
   version "7.0.7"
@@ -1771,7 +1767,6 @@
 
 "@types/node@link:../node_modules/@types/node":
   version "0.0.0"
-  uid ""
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -1795,11 +1790,9 @@
 
 "@types/react-dom@link:../node_modules/@types/react-dom":
   version "0.0.0"
-  uid ""
 
 "@types/react@link:../node_modules/@types/react":
   version "0.0.0"
-  uid ""
 
 "@types/resolve@0.0.8":
   version "0.0.8"
@@ -2279,8 +2272,7 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
     color-convert "^2.0.1"
 
 "antd-country-phone-input@link:..":
-  version "0.0.0"
-  uid ""
+  version "4.3.0"
 
 anymatch@^2.0.0:
   version "2.0.0"
@@ -9169,7 +9161,6 @@ react-dev-utils@^11.0.3:
 
 "react-dom@link:../node_modules/react-dom":
   version "0.0.0"
-  uid ""
 
 react-error-overlay@^6.0.9:
   version "6.0.9"
@@ -9259,7 +9250,6 @@ react-scripts@~4.0.1:
 
 "react@link:../node_modules/react":
   version "0.0.0"
-  uid ""
 
 read-pkg-up@^2.0.0:
   version "2.0.0"
@@ -10851,7 +10841,6 @@ typedarray@^0.0.6:
 
 "typescript@link:../node_modules/typescript":
   version "0.0.0"
-  uid ""
 
 unbox-primitive@^1.0.0:
   version "1.0.0"
@@ -10982,9 +10971,9 @@ url-loader@4.1.1:
     schema-utils "^3.0.0"
 
 url-parse@^1.4.3, url-parse@^1.4.7:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.1.tgz#d5fa9890af8a5e1f274a2c98376510f6425f6e3b"
-  integrity sha512-HOfCOUJt7iSYzEx/UqgtwKRMC6EU91NFhsCHMv9oM03VJcVo2Qrp8T8kI9D7amFf1cu+/3CEhgb3rF9zL7k85Q==
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.4.tgz#e4f645a7e2a0852cc8a66b14b292a3e9a11a97fd"
+  integrity sha512-ITeAByWWoqutFClc/lRZnFplgXgEZr3WJ6XngMM/N9DMIm4K8zXPCZ1Jdu0rERwO84w1WC5wkle2ubwTA4NTBg==
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
