@@ -1,5 +1,5 @@
 import CountryPhoneInput, { ConfigProvider } from 'antd-country-phone-input';
-import zh from 'world_countries_lists/data/zh/world.json';
+import zh from 'world_countries_lists/data/countries/zh/world.json';
 import 'antd/dist/antd.css';
 import 'antd-country-phone-input/dist/index.css';
 

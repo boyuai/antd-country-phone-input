@@ -33,7 +33,7 @@ yarn add antd-country-phone-input world_countries_lists
 
 ``` tsx | pure
 import CountryPhoneInput, { ConfigProvider } from 'antd-country-phone-input';
-import en from 'world_countries_lists/data/en/world.json';
+import en from 'world_countries_lists/data/countries/en/world.json';
 
 // 通常只需要在 App.js/App.tsx 中引入一次 ConfigProvider 和 CSS
 // 请留意 CSS 的引入顺序，否则可能会有样式不正常的问题

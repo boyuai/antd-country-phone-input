@@ -14,7 +14,7 @@
     "rc-select": "^12.1.13",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
-    "world_countries_lists": "^2.1.0"
+    "world_countries_lists": "^2.4.0"
   },
   "devDependencies": {
     "@craco/craco": "^6.4.0",
