@@ -30,10 +30,11 @@ yarn add antd-country-phone-input world_countries_lists
 > **Breaking Changes:**
 > 1. To avoid unnecessary encapsulation for different locales, `4.0` lifted areas state up to `ConfigProvider`(based on React Context). You need to put it in the right place(index.js/App.js/...), then all components will have access to the provided config.
 > 2. `Tree Shaking` is supported in `4.1`, you need to install `world_countries_lists` explicitly. Thus, you could customize translation JSON and it is better than `areaMapper` in `ConfigProvider`.
+> 3. `world_countries_lists` updated their file structure from [2.4.0](https://github.com/stefangabos/world_countries/releases/tag/2.4.0): `world_countries_lists/data/en/world.json` -> `world_countries_lists/data/countries/en/world.json`.
 
 ```tsx | pure
 import CountryPhoneInput, { ConfigProvider } from 'antd-country-phone-input';
-import en from 'world_countries_lists/data/countries/en/world.json'; // As per the latest world_countries_lists version they have updated their data directory file structure
+import en from 'world_countries_lists/data/countries/en/world.json';
 
 // Usually you only need to import ConfigProvider & CSS once in App.js/App.tsx
 // CSS order is important!

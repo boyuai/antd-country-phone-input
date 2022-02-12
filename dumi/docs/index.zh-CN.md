@@ -30,10 +30,11 @@ yarn add antd-country-phone-input world_countries_lists
 > **Breaking Changes:**
 > 1. 为了避免业务项目中不必要的二次封装，`4.0` 将经过翻译/处理的地区状态提升到了 `ConfigProvider` 中（基于 React Context）。在使用组件时需要在 App 入口挂载 `ConfigProvider`，挂载后内部即可使用相同的配置。
 > 2. `4.1` 将翻译数据库 `world_countries_lists` 暴露出来，从而支持 `Tree Shaking` 以及更高级的自定义翻译，这会比 `ConfigProvider` 的 `areaMapper` 运行时修改更直接。
+> 3. `world_countries_lists` 从 [2.4.0](https://github.com/stefangabos/world_countries/releases/tag/2.4.0) 开始调整了目录结构：`world_countries_lists/data/en/world.json` -> `world_countries_lists/data/countries/en/world.json`。
 
 ``` tsx | pure
 import CountryPhoneInput, { ConfigProvider } from 'antd-country-phone-input';
-import en from 'world_countries_lists/data/countries/en/world.json';
+import zh from 'world_countries_lists/data/countries/zh/world.json';
 
 // 通常只需要在 App.js/App.tsx 中引入一次 ConfigProvider 和 CSS
 // 请留意 CSS 的引入顺序，否则可能会有样式不正常的问题
@@ -42,7 +43,7 @@ import 'antd-country-phone-input/dist/index.css';
 
 const App = () => {
   return (
-    <ConfigProvider locale={en}>
+    <ConfigProvider locale={zh}>
       <CountryPhoneInput />
     </ConfigProvider>
   );
