@@ -1,6 +1,9 @@
 import Head from 'next/head';
-import CountryPhoneInput, { ConfigProvider } from 'antd-country-phone-input';
 import en from 'world_countries_lists/data/countries/en/world.json';
+import CountryPhoneInput, { ConfigProvider } from 'antd-country-phone-input';
+import LiteCountryPhoneInput, {
+  ConfigProvider as LiteConfigProvider,
+} from 'antd-country-phone-input/dist/lite';
 
 export default function Home() {
   return (
@@ -19,6 +22,12 @@ export default function Home() {
           <ConfigProvider locale={en}>
             <CountryPhoneInput />
           </ConfigProvider>
+        </p>
+
+        <p className="description">
+          <LiteConfigProvider locale={en}>
+            <LiteCountryPhoneInput />
+          </LiteConfigProvider>
         </p>
       </main>
 

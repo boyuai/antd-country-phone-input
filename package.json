@@ -30,7 +30,7 @@
       "import": "./dist/index.m.css",
       "require": "./dist/index.css"
     },
-    "./lite": {
+    "./dist/lite": {
       "import": "./dist/lite.m.js",
       "require": "./dist/lite.js"
     }
