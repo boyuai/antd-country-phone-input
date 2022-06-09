@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "name": "antd-country-phone-input",
-  "version": "4.3.1",
+  "version": "4.3.2",
   "description": "Country phone input component as standard Ant.Design form item",
   "author": "wangsijie <i@sijie.wang>",
   "homepage": "https://boyuai.github.io/antd-country-phone-input/",
@@ -21,8 +21,8 @@
   "main": "./dist/index.js",
   "module": "./dist/index.m.js",
   "typings": "./dist/index.d.ts",
-	"exports": {
-		".": {
+  "exports": {
+    ".": {
       "import": "./dist/index.m.js",
       "require": "./dist/index.js"
     },
@@ -30,11 +30,11 @@
       "import": "./dist/index.m.css",
       "require": "./dist/index.css"
     },
-		"./lite": {
+    "./lite": {
       "import": "./dist/lite.m.js",
       "require": "./dist/lite.js"
     }
-	},
+  },
   "files": [
     "dist"
   ],
