@@ -21,6 +21,20 @@
   "main": "./dist/index.js",
   "module": "./dist/index.m.js",
   "typings": "./dist/index.d.ts",
+	"exports": {
+		".": {
+      "import": "./dist/index.m.js",
+      "require": "./dist/index.js"
+    },
+    "./dist/index.css": {
+      "import": "./dist/index.m.css",
+      "require": "./dist/index.css"
+    },
+		"./lite": {
+      "import": "./dist/lite.m.js",
+      "require": "./dist/lite.js"
+    }
+	},
   "files": [
     "dist"
   ],
@@ -57,8 +71,8 @@
   },
   "peerDependencies": {
     "antd": "4.x",
-    "rc-select": "^12.1.13",
-    "react": ">= 16.8.0 || 17.x",
+    "rc-select": "^12.1.13 || 13.x || 14.x",
+    "react": ">= 16.8.0 || 17.x || 18.x",
     "world_countries_lists": "^2.1.0"
   },
   "devDependencies": {
