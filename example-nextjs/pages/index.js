@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { CountryPhoneInput, ConfigProvider } from 'antd-country-phone-input';
+import CountryPhoneInput, { ConfigProvider } from 'antd-country-phone-input';
 import en from 'world_countries_lists/data/countries/en/world.json';
 
 export default function Home() {
