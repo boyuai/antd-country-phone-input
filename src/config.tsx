@@ -44,19 +44,23 @@ const { Provider } = configContext;
 
 export type AreaFilter = (value: Area, index: number, array: Area[]) => boolean;
 export type AreaMapper = (value: Area, index: number, array: Area[]) => Area;
+export type AreaSorter = (a: Area, b: Area) => number;
 const defaultAreaFilter: AreaFilter = () => true;
 const defaultAreaMapper: AreaMapper = (area) => area;
+const defaultAreaSorter: AreaSorter = () => -1;
 
 export const ConfigProvider = ({
   children,
   locale = {},
   areaFilter = defaultAreaFilter,
   areaMapper = defaultAreaMapper,
+  areaSorter = defaultAreaSorter,
 }: {
   children: ReactNode;
   locale?: any;
   areaFilter?: AreaFilter;
   areaMapper?: AreaMapper;
+  areaSorter?: AreaSorter;
 }) => {
   const [state, dispatch] = useReducer<Reducer<State, Action>>(
     configReducer,
@@ -71,9 +75,10 @@ export const ConfigProvider = ({
   useEffect(() => {
     const payload = areas
       .filter((area, index, array) => areaFilter(area, index, array))
-      .map((area, index, array) => areaMapper(area, index, array));
+      .map((area, index, array) => areaMapper(area, index, array))
+      .sort((a, b) => areaSorter(a, b));
     dispatch({ type: ActionKind.SET_AREAS, payload });
-  }, [areas, areaFilter, areaMapper]);
+  }, [areas, areaFilter, areaMapper, areaSorter]);
 
   return <Provider value={state}>{children}</Provider>;
 };
