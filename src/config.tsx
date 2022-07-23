@@ -5,7 +5,7 @@ import React, {
   useReducer,
   useState,
 } from 'react';
-import { Area, getAreas, getSortedAreas } from './sources';
+import { Area, getAreas } from './sources';
 
 type State = {
   areas: Area[];
@@ -44,6 +44,7 @@ const { Provider } = configContext;
 
 export type AreaFilter = (value: Area, index: number, array: Area[]) => boolean;
 export type AreaMapper = (value: Area, index: number, array: Area[]) => Area;
+export type AreaSorter = (a: Area, b: Area) => number;
 const defaultAreaFilter: AreaFilter = () => true;
 const defaultAreaMapper: AreaMapper = (area) => area;
 
@@ -52,13 +53,13 @@ export const ConfigProvider = ({
   locale = {},
   areaFilter = defaultAreaFilter,
   areaMapper = defaultAreaMapper,
-  areaSorter = false,
+  areaSorter,
 }: {
   children: ReactNode;
   locale?: any;
   areaFilter?: AreaFilter;
   areaMapper?: AreaMapper;
-  areaSorter?: boolean;
+  areaSorter?: AreaSorter;
 }) => {
   const [state, dispatch] = useReducer<Reducer<State, Action>>(
     configReducer,
@@ -71,10 +72,13 @@ export const ConfigProvider = ({
   }, [locale]);
 
   useEffect(() => {
-    let sortedAreas = areaSorter ? getSortedAreas(areas) : areas;
-    const payload = sortedAreas
+    let payload = areas
       .filter((area, index, array) => areaFilter(area, index, array))
       .map((area, index, array) => areaMapper(area, index, array));
+    if (areaSorter) {
+      payload = payload.sort(areaSorter);
+    }
+
     dispatch({ type: ActionKind.SET_AREAS, payload });
   }, [areas, areaFilter, areaMapper, areaSorter]);
 
