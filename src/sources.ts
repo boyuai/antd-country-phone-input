@@ -8,23 +8,6 @@ export const getAreas = (locale: any) => {
   }));
 };
 
-export const getSortedAreas = (areas: Area[]) => {
-  return areas.sort((a, b) => {
-    if (a.name && b.name) {
-      const nameA = a.name.toUpperCase();
-      const nameB = b.name.toUpperCase();
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-      return 0;
-    }
-    return 0;
-  });
-};
-
 export type Area = {
   short: string;
   phoneCode: number;
