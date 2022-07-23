@@ -6,6 +6,7 @@ import InlineStyle from './demos/inline-style';
 import CustomArea from './demos/custom-area';
 import CustomFlag from './demos/custom-flag';
 import AntdForm from './demos/antd-form';
+import CustomSorter from './demos/custom-sorter';
 
 const cardStyle = { marginBottom: 6 };
 
@@ -23,6 +24,9 @@ const App = () => {
       </Card>
       <Card type="inner" title="Custom Area" style={cardStyle}>
         <CustomArea />
+      </Card>
+      <Card type="inner" title="Custom Sorter" style={cardStyle}>
+        <CustomSorter />
       </Card>
       <Card type="inner" title="Custom Flag" style={cardStyle}>
         <CustomFlag />
