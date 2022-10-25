@@ -2,7 +2,7 @@ import { Select } from 'antd';
 import { OptionProps, SelectProps } from 'antd/es/select';
 import React, { useContext } from 'react';
 import { configContext } from './config';
-import { filterOption, filterSort } from './shared';
+import { filterOption } from './shared';
 
 export interface AreaSelectProps extends SelectProps<any> {
   optionProps?: OptionProps;
@@ -28,7 +28,6 @@ export const AreaSelect = ({
         dropdownMatchSelectWidth={false}
         optionLabelProp="label"
         filterOption={filterOption}
-        filterSort={filterSort}
         {...selectProps}
       >
         {areas.map((item) => {

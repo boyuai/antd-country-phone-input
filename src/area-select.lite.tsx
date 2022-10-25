@@ -2,7 +2,7 @@ import Select, { SelectProps } from 'rc-select';
 import { OptionProps } from 'rc-select/es/Option';
 import React, { useContext } from 'react';
 import { configContext } from './config';
-import { filterOption, filterSort } from './shared';
+import { filterOption } from './shared';
 
 export interface AreaSelectProps extends SelectProps<any> {
   optionProps?: OptionProps;
@@ -13,6 +13,12 @@ export const AreaSelect = ({
   ...selectProps
 }: AreaSelectProps) => {
   const { areas } = useContext(configContext);
+
+  const filterSort: SelectProps['filterSort'] = (a, b) => {
+    const keyA = a.key as string;
+    const keyB = b.key as string;
+    return keyA.length - keyB.length;
+  };
 
   return (
     <Select
