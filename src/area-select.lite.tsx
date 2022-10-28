@@ -14,12 +14,6 @@ export const AreaSelect = ({
 }: AreaSelectProps) => {
   const { areas } = useContext(configContext);
 
-  const filterSort: SelectProps['filterSort'] = (a, b) => {
-    const keyA = a.key as string;
-    const keyB = b.key as string;
-    return keyA.length - keyB.length;
-  };
-
   return (
     <Select
       showArrow
@@ -27,7 +21,6 @@ export const AreaSelect = ({
       dropdownMatchSelectWidth={false}
       optionLabelProp="label"
       filterOption={filterOption}
-      filterSort={filterSort}
       {...selectProps}
     >
       {areas.map((item) => {
