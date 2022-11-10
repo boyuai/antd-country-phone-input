@@ -2,7 +2,7 @@ import Select, { SelectProps } from 'rc-select';
 import { OptionProps } from 'rc-select/es/Option';
 import React, { useContext } from 'react';
 import { configContext } from './config';
-import { filterOption, filterSort } from './shared';
+import { filterOption } from './shared';
 
 export interface AreaSelectProps extends SelectProps<any> {
   optionProps?: OptionProps;
@@ -21,7 +21,6 @@ export const AreaSelect = ({
       dropdownMatchSelectWidth={false}
       optionLabelProp="label"
       filterOption={filterOption}
-      filterSort={filterSort}
       {...selectProps}
     >
       {areas.map((item) => {

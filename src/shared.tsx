@@ -15,12 +15,6 @@ export const filterOption: SelectProps['filterOption'] = (input, option) => {
   return keyHasAllChars;
 };
 
-export const filterSort: SelectProps['filterSort'] = (a, b) => {
-  const keyA = a.key as string;
-  const keyB = b.key as string;
-  return keyA.length - keyB.length;
-};
-
 export const usePhoneInput = ({
   isControlled,
   defaultValue,

@@ -47,13 +47,27 @@ export type AreaMapper = (value: Area, index: number, array: Area[]) => Area;
 export type AreaSorter = (a: Area, b: Area) => number;
 const defaultAreaFilter: AreaFilter = () => true;
 const defaultAreaMapper: AreaMapper = (area) => area;
+const defaultAreaSorter: AreaSorter = (a, b) => {
+  if (a.name && b.name) {
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  }
+  return 0;
+};
 
 export const ConfigProvider = ({
   children,
   locale = {},
   areaFilter = defaultAreaFilter,
   areaMapper = defaultAreaMapper,
-  areaSorter,
+  areaSorter = defaultAreaSorter,
 }: {
   children: ReactNode;
   locale?: any;
