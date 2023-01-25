@@ -1,8 +1,8 @@
 {
   "license": "MIT",
-  "name": "antd-country-phone-input",
-  "version": "4.5.0",
-  "description": "Country phone input component as standard Ant.Design form item",
+  "name": "antd-v5-country-phone-input",
+  "version": "1.0.0",
+  "description": "Country phone input component as standard Ant.Design form item compatible with antd version 5",
   "author": "wangsijie <i@sijie.wang>",
   "homepage": "https://boyuai.github.io/antd-country-phone-input/",
   "repository": "git@github.com:boyuai/antd-country-phone-input.git",
