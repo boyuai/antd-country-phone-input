@@ -28,6 +28,7 @@ export const AreaSelect = ({
         dropdownMatchSelectWidth={false}
         optionLabelProp="label"
         // filterOption={filterOption}
+        filterOption={false}
         {...selectProps}
       >
         {areas.map((item) => {

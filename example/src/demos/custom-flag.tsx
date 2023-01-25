@@ -1,6 +1,6 @@
 import CountryPhoneInput, { ConfigProvider } from 'antd-country-phone-input';
 import zhTW from 'world_countries_lists/data/countries/zh-tw/world.json';
-import 'antd/dist/antd.css';
+import '// antd/dist/antd.css';
 import 'antd-country-phone-input/dist/index.css';
 
 // You could use any flag package you like.
